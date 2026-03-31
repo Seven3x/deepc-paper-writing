@@ -14,13 +14,13 @@
 - 在后续更深一轮文献调研与工程筛查后，当前最推荐主线已经从“方向二打底 + 方向一主贡献”收缩为：
   - **Measurement-Aware / Covariance-Aware Regularized DeePC for Quadcopter Outer-Loop Position Tracking**
 - 详细的最终结论、方法定义、实验矩阵和工程改造建议，请优先阅读：
-  - [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
+  - [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
 
 如果你是新 agent，建议阅读顺序：
 
 1. 先看本文件，理解最初的三方向比较和舍弃逻辑
-2. 再看 [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/docs/overview/recommended_measurement_aware_deepc_direction.md)，执行当前最终方案
-3. 若需要开始代码工作，再看 [ENGINEERING_MAP.md](/home/roxy/deepc-paper/docs/engineering/ENGINEERING_MAP.md)
+2. 再看 [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/paper/docs/overview/recommended_measurement_aware_deepc_direction.md)，执行当前最终方案
+3. 若需要开始代码工作，再看 [ENGINEERING_MAP.md](/home/roxy/deepc-paper/paper/docs/engineering/ENGINEERING_MAP.md)
 
 ---
 
@@ -516,7 +516,7 @@
 - 当前最终推荐是：
   - **以 direction 2 为核心，做一个更窄、更可防守的 measurement-aware regularized DeePC 论文**
 - 最终可执行版本已整理在：
-  - [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
+  - [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
 
 如果目标是：
 

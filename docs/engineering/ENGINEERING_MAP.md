@@ -2,7 +2,7 @@
 
 ## 目标
 
-把 [DeePC_Quadcopter](/home/roxy/deepc-paper/DeePC_Quadcopter) 从单次交互式仿真原型，整理成适合当前论文主线的实验底座。
+把 [DeePC_Quadcopter](/home/roxy/deepc-paper/deepc) 从单次交互式仿真原型，整理成适合当前论文主线的实验底座。
 
 当前论文主线是：
 
@@ -10,19 +10,19 @@
 
 ## 代码目录总览
 
-- [main.py](/home/roxy/deepc-paper/DeePC_Quadcopter/main.py)
+- [main.py](/home/roxy/deepc-paper/deepc/main.py)
   当前主入口。负责交互式选择仿真、动画和结果保存。
-- [Controllers/deepc.py](/home/roxy/deepc-paper/DeePC_Quadcopter/Controllers/deepc.py)
+- [Controllers/deepc.py](/home/roxy/deepc-paper/deepc/Controllers/deepc.py)
   DeePC 控制器核心。当前已有 `y_ini`、`sigma_y`、softened consistency 和统一 regularization。
-- [Controllers/lqr.py](/home/roxy/deepc-paper/DeePC_Quadcopter/Controllers/lqr.py)
+- [Controllers/lqr.py](/home/roxy/deepc-paper/deepc/Controllers/lqr.py)
   初始控制器和基线之一。
-- [quadcopter.py](/home/roxy/deepc-paper/DeePC_Quadcopter/quadcopter.py)
+- [quadcopter.py](/home/roxy/deepc-paper/deepc/quadcopter.py)
   四旋翼模型、输出定义、约束与成本矩阵。
-- [trajectory_generator.py](/home/roxy/deepc-paper/DeePC_Quadcopter/trajectory_generator.py)
+- [trajectory_generator.py](/home/roxy/deepc-paper/deepc/trajectory_generator.py)
   参考轨迹生成。
-- [Simulator/simulation.py](/home/roxy/deepc-paper/DeePC_Quadcopter/Simulator/simulation.py)
+- [Simulator/simulation.py](/home/roxy/deepc-paper/deepc/Simulator/simulation.py)
   仿真循环。
-- [hdf5_reader.py](/home/roxy/deepc-paper/DeePC_Quadcopter/hdf5_reader.py)
+- [hdf5_reader.py](/home/roxy/deepc-paper/deepc/hdf5_reader.py)
   当前结果保存与读取。
 
 ## 与论文最相关的已知实现事实
@@ -100,11 +100,11 @@
 
 ## 文件级改造优先级
 
-1. [main.py](/home/roxy/deepc-paper/DeePC_Quadcopter/main.py)
+1. [main.py](/home/roxy/deepc-paper/deepc/main.py)
    先把交互式入口改成可复现实验入口。
-2. [quadcopter.py](/home/roxy/deepc-paper/DeePC_Quadcopter/quadcopter.py)
+2. [quadcopter.py](/home/roxy/deepc-paper/deepc/quadcopter.py)
    先补测量层和输出配置。
-3. [Controllers/deepc.py](/home/roxy/deepc-paper/DeePC_Quadcopter/Controllers/deepc.py)
+3. [Controllers/deepc.py](/home/roxy/deepc-paper/deepc/Controllers/deepc.py)
    再加 covariance-aware regularization。
 4. 新增脚本目录
    最后补批量实验。

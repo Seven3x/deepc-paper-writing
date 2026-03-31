@@ -17,14 +17,14 @@
    - fixed-budget data selection
    - mode-aware / multi-bank DeePC
 3. 如果需要理解早期分歧和三方向比较，请回看：
-   - [deepc_quadcopter_three_directions_summary.md](/home/roxy/deepc-paper/docs/overview/deepc_quadcopter_three_directions_summary.md)
+   - [deepc_quadcopter_three_directions_summary.md](/home/roxy/deepc-paper/paper/docs/overview/deepc_quadcopter_three_directions_summary.md)
 4. 如果需要开始工程实现，请优先围绕：
    - 测量模型
    - 输出配置
    - covariance-aware regularization
    - 批量实验
 5. 如果需要直接进入代码，请继续看：
-   - [ENGINEERING_MAP.md](/home/roxy/deepc-paper/docs/engineering/ENGINEERING_MAP.md)
+   - [ENGINEERING_MAP.md](/home/roxy/deepc-paper/paper/docs/engineering/ENGINEERING_MAP.md)
 
 ### 当前已知工程底座
 

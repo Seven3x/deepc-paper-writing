@@ -11,17 +11,17 @@
 
 ## 最重要的两份文档
 
-- [最终方向](/home/roxy/deepc-paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
-- [计划入口](/home/roxy/deepc-paper/docs/plans/plan_index.md)
+- [最终方向](/home/roxy/deepc-paper/paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
+- [计划入口](/home/roxy/deepc-paper/paper/docs/plans/plan_index.md)
 
 ## 阅读顺序
 
 如果你是新 agent：
 
-1. [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
-2. [plan_index.md](/home/roxy/deepc-paper/docs/plans/plan_index.md)
-3. [ENGINEERING_MAP.md](/home/roxy/deepc-paper/docs/engineering/ENGINEERING_MAP.md)
-4. 需要理解早期取舍时，再看 [deepc_quadcopter_three_directions_summary.md](/home/roxy/deepc-paper/docs/overview/deepc_quadcopter_three_directions_summary.md)
+1. [recommended_measurement_aware_deepc_direction.md](/home/roxy/deepc-paper/paper/docs/overview/recommended_measurement_aware_deepc_direction.md)
+2. [plan_index.md](/home/roxy/deepc-paper/paper/docs/plans/plan_index.md)
+3. [ENGINEERING_MAP.md](/home/roxy/deepc-paper/paper/docs/engineering/ENGINEERING_MAP.md)
+4. 需要理解早期取舍时，再看 [deepc_quadcopter_three_directions_summary.md](/home/roxy/deepc-paper/paper/docs/overview/deepc_quadcopter_three_directions_summary.md)
 
 ## 当前拍板
 
@@ -31,7 +31,7 @@
 
 当前工程底座：
 
-- [DeePC_Quadcopter](/home/roxy/deepc-paper/DeePC_Quadcopter)
+- [DeePC_Quadcopter](/home/roxy/deepc-paper/deepc)
 
 当前不建议作为首篇主线：
 
