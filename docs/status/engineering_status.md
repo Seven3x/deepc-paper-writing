@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 10:55
+最后更新时间：2026-04-01 13:50
 
 ## 目标
 
@@ -13,7 +13,7 @@
 
 ## 当前状态
 
-- 状态：已跑通最小工程链路，继续收敛 baseline
+- 状态：已明确短程稳定区间，并找到一组长时段 `step` 可用候选
 - 主执行目录：`/home/roxy/deepc-paper`
 - 代码入口：`deepc/main.py`
 - 已发现 conda：`/home/roxy/miniconda3/bin/conda`
@@ -32,13 +32,19 @@
 - 已新增非交互实验入口：`deepc/run_experiment.py`
 - 已新增 `LQR` 跟踪包装器：`deepc/Controllers/lqr_tracking.py`
 - 已修复 `trajectory_generator.py` 中参考轨迹耗尽时的空数组边界问题
+- 已把 `T_ini / N / lambda_y / lambda_g / 初始噪声` 做成 CLI 可调
+- 已新增 OFAT 烟测脚本：`deepc/sweep_deepc_smoke.py`
+- 已新增 `deepc/.gitignore`，忽略缓存和运行产物目录
+- 已修复 `figure8` 参考生成中的除零 warning
 
 ## 风险与缺口
 
 - `linear MPC` baseline 目前仍是实现缺口
-- `regularized DeePC` 已跑通，但当前参数下在后段明显发散
-- `cvxpy` 给出 DPP 效率警告，当前滚动优化速度偏慢
-- `cvxpy` 给出 `Solution may be inaccurate` 告警，后续要检查求解器与缩放
+- 第一轮稳定区间只覆盖了较短 `step` 烟测，还没有跨轨迹验证
+- 当前稳定区间已覆盖短程 `step + figure8`
+- 长时段验证已完成，`step` 与 `figure8` 的难度明显不同
+- `cvxpy` 滚动优化仍偏慢，但切到 `CLARABEL + ignore_dpp=True` 后已可接受
+- 长时段验证目前主要是 `seed=42`，还没做多种子复核
 
 ## 最近动作
 
@@ -49,6 +55,10 @@
 - 已补齐 `delivery` 环境所缺依赖：`control`、`cvxpy`、`h5py`、`sympy`
 - 已完成 `LQR` 最小烟测
 - 已完成 `regularized DeePC` 最小烟测
+- 已完成超参数可调化改造
+- 已完成第一轮 OFAT 烟测
+- 已完成第二轮多随机种子、多轨迹验证
+- 已完成第三轮长时段验证与组合修正
 
 ## 本轮执行命令
 
@@ -75,6 +85,26 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/run_exp
   --dt 0.001 --seed 42 --lqr-noise 0.1 --tag smoke --save-hdf5
 ```
 
+单运行稳定性验证：
+
+```bash
+MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/run_experiment.py \
+  --controller deepc --trajectory step --reference-duration 3 --sampling-time 0.1 \
+  --dt 0.001 --seed 42 --lqr-noise 0.02 --deepc-T-ini 4 --deepc-N 8 \
+  --deepc-lambda-y 300 --deepc-lambda-g 3 --deepc-solver CLARABEL \
+  --quiet --tag tunecheck
+```
+
+第一轮 OFAT 烟测：
+
+```bash
+MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_deepc_smoke.py \
+  --trajectory step --reference-duration 3 --sampling-time 0.1 --dt 0.001 --seed 42 \
+  --base-T-ini 4 --base-N 8 --base-lambda-y 300 --base-lambda-g 3 --base-lqr-noise 0.02 \
+  --t-ini-values 4,6 --N-values 8,10 --lambda-y-values 300,1000 \
+  --lambda-g-values 3,10 --lqr-noise-values 0.02,0.05 --tag round1
+```
+
 ## 关键结果
 
 ### `LQR` 烟测
@@ -97,13 +127,153 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/run_exp
   - `rmse_all_outputs = 0.3814`
   - `rmse_position = 0.3489`
   - `rmse_yaw = 0.6593`
-  - `final_position_error_norm = 4.2027`
+- `final_position_error_norm = 4.2027`
 - 结论：工程上已经跑通 `original regularized DeePC`，但这组最小设置在后段明显失稳，暂时不能当成稳定 baseline
+
+### 收敛后的稳定单运行
+
+- 结果目录：`deepc/Results/deepc_step_20260401_113528_tunecheck`
+- 配置：
+  - `T_ini = 4`
+  - `N = 8`
+  - `lambda_y = 300`
+  - `lambda_g = 3`
+  - `lqr_noise = 0.02`
+  - `solver = CLARABEL`
+- 指标：
+  - `rmse_position = 0.1187`
+  - `rmse_yaw = 0.00707`
+  - `final_position_error_norm = 0.00157`
+- 结论：相比之前默认设置，已经进入稳定工作区
+
+### 第一轮 OFAT 烟测
+
+- 汇总目录：`deepc/Results/deepc_smoke_20260401_113538_round1`
+- 总运行数：`6`
+- 稳定运行数：`6 / 6`
+- 排名最优配置：
+  - `T_ini = 4`
+  - `N = 10`
+  - `lambda_y = 300`
+  - `lambda_g = 3`
+  - `lqr_noise = 0.02`
+  - `rmse_position = 0.1131`
+  - `rmse_yaw = 0.00688`
+- 敏感性结论：
+  - `N: 8 -> 10` 有小幅收益
+  - `T_ini: 4 -> 6` 也有小幅收益
+  - `lambda_y: 300 -> 1000` 基本无显著收益
+  - `lambda_g: 3 -> 10` 略差
+  - `lqr_noise: 0.02 -> 0.05` 明显变差，但仍稳定
+
+### 第二轮验证：固定候选参数跨轨迹、跨种子
+
+- 验证配置：
+  - `T_ini = 4`
+  - `N = 10`
+  - `lambda_y = 300`
+  - `lambda_g = 3`
+  - `lqr_noise = 0.02`
+  - `solver = CLARABEL`
+- 运行集合：
+  - `step`: seeds `42 / 7 / 123`
+  - `figure8`: seeds `42 / 7 / 123`
+- 结果目录：
+  - `deepc/Results/deepc_step_20260401_134401_round2`
+  - `deepc/Results/deepc_step_20260401_134408_round2`
+  - `deepc/Results/deepc_step_20260401_134414_round2`
+  - `deepc/Results/deepc_figure8_20260401_134420_round2`
+  - `deepc/Results/deepc_figure8_20260401_134426_round2`
+  - `deepc/Results/deepc_figure8_20260401_134432_round2`
+- 汇总结论：
+  - `6 / 6` 运行全部 `all_finite = true`
+  - `step`：
+    - `rmse_position` 约 `0.108 ~ 0.113`
+    - `rmse_yaw` 约 `0.0069 ~ 0.0090`
+    - `final_position_error_norm` 约 `0.00018 ~ 0.00311`
+  - `figure8`：
+    - `rmse_position` 约 `0.0589 ~ 0.0621`
+    - `rmse_yaw` 约 `0.0213 ~ 0.0349`
+    - `final_position_error_norm` 约 `0.0165 ~ 0.0241`
+- 阶段判断：
+  - 这组参数已经可视为“短程稳定 baseline 候选”
+  - 下一步不该继续盲目扫超参，应转向更长时段与更高噪声验证
+
+### 第三轮验证：长时段 `reference_duration = 6`
+
+- 旧短程候选：
+  - `T_ini = 4`
+  - `N = 10`
+  - `lambda_y = 300`
+  - `lambda_g = 3`
+- 长时段结果：
+  - `step` 明显失稳
+    - `rmse_position = 3.5600`
+    - `rmse_yaw = 1.1370`
+    - `final_position_error_norm = 35.0760`
+  - `figure8` 仍稳定
+    - `noise = 0.02` 时 `rmse_position = 0.0552`
+    - `noise = 0.05` 时 `rmse_position = 0.0638`
+
+### 第四轮验证：`step-6s` 组合修正
+
+- 单因素 OFAT 汇总目录：
+  - `deepc/Results/deepc_smoke_20260401_134625_step6_round1`
+- 单因素结论：
+  - 单独增大 `T_ini`、`N`、`lambda_y`、`lambda_g` 都无法把 `step-6s` 拉回稳定区
+  - 但 `T_ini = 8` 与 `lambda_y = 1000` 显著改善了误差量级
+
+- 组合测试结果：
+  - `T_ini=8, N=10, lambda_y=1000, lambda_g=3`
+    - 仍不稳定，`final_position_error_norm = 24.56`
+  - `T_ini=8, N=10, lambda_y=1000, lambda_g=10`
+    - 已进入可用区间
+    - 结果目录：`deepc/Results/deepc_step_20260401_134801_step6_combo_b`
+    - 指标：
+      - `rmse_position = 0.1483`
+      - `rmse_yaw = 0.0430`
+      - `final_position_error_norm = 0.0607`
+      - `max_abs_position_error = 0.6944`
+  - `T_ini=8, N=12, lambda_y=1000, lambda_g=3`
+    - 仍不稳定
+  - `T_ini=6, N=10, lambda_y=1000, lambda_g=3`
+    - 仍不稳定
+
+### 组合候选的跨轨迹确认
+
+- 候选参数：
+  - `T_ini = 8`
+  - `N = 10`
+  - `lambda_y = 1000`
+  - `lambda_g = 10`
+- 确认结果：
+  - `step, 6s, noise=0.02`
+    - 稳定，可用
+  - `step, 6s, noise=0.05`
+    - 仍不稳定，`final_position_error_norm = 23.68`
+  - `figure8, 6s, noise=0.02`
+    - 稳定，`rmse_position = 0.0558`
+  - `figure8, 6s, noise=0.05`
+    - 稳定，`rmse_position = 0.0680`
+
+## 当前阶段判断
+
+- 若噪声较低，当前可把下面这组参数作为“长时段稳定 baseline 候选”：
+  - `T_ini = 8`
+  - `N = 10`
+  - `lambda_y = 1000`
+  - `lambda_g = 10`
+- 当前主要剩余难点不是普通跟踪，而是：
+  - `step` 轨迹
+  - 更高初始激励噪声
 
 ## 下一步
 
-- 把 `regularized DeePC` 烟测收缩成更稳定的 baseline 设定
-  - 优先检查 `T_ini / N / lambda_y / lambda_g / 初始噪声强度`
-- 给 `run_experiment.py` 增加可调超参数入口，避免手改源码
-- 明确是否现在补 `linear MPC`
-  - 如果按计划严格推进，下一步应该补这个 baseline
+- 以 `N=10, T_ini=4, lambda_y=300, lambda_g=3, lqr_noise=0.02` 作为当前候选 baseline
+- 短程候选已升级为分层结论：
+  - 短程稳定候选：`T_ini=4, N=10, lambda_y=300, lambda_g=3`
+  - 长时段低噪声候选：`T_ini=8, N=10, lambda_y=1000, lambda_g=10`
+- 下一步建议：
+  - 对长时段候选做多种子复核
+  - 若仍稳定，再补 `linear MPC`
+  - 若用户更重视高噪声稳健性，再转入测量失配层而不是继续硬调 uniform regularization
