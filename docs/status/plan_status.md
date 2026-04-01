@@ -1,6 +1,6 @@
 # 总计划状态
 
-最后更新时间：2026-04-01 15:02
+最后更新时间：2026-04-01 15:14
 
 ## 总体目标
 
@@ -12,7 +12,7 @@
 
 ### 阶段 1：工程与 baseline
 
-- 状态：进行中，`LQR / linear MPC / original regularized DeePC` 都已接入并跑过最小实验
+- 状态：已完成，`LQR / linear MPC / original regularized DeePC` 都已接入并完成 baseline smoke test
 - 目标：把 `deepc/` 整理成可重复实验入口，并跑通 `LQR / linear MPC / original regularized DeePC`
 - 当前结论：
   - `LQR`、`linear MPC` 与 `original regularized DeePC` 已实际跑通最小实验
@@ -25,7 +25,7 @@
 
 ### 阶段 2：测量模型层
 
-- 状态：未开始
+- 状态：进行中，已接入 `yaw bias / yaw drift / anisotropic noise` 并完成首轮烟测
 - 目标：补 `yaw bias / yaw drift / anisotropic noise`
 
 ### 阶段 3：measurement-aware regularization
@@ -69,10 +69,14 @@
 - 已完成统一 baseline 对比：
   - `deepc/Results/baseline_compare_20260401_150138_smoke`
   - `5 / 6` nominal 运行通过稳定门槛
+- 已完成测量模型层首轮烟测：
+  - `deepc/Results/measurement_compare_20260401_151253_stageC_smoke`
+  - `yaw bias` 尚可承受
+  - `yaw drift / anisotropic noise` 会明显拖坏当前 `uniform regularized DeePC`
 - 当前阶段性判断：
   - 工程改造方向是对的
   - 论文主线暂时不要往前推
   - 短程稳定 baseline 基本成立
   - 长时段低噪声 baseline 也已出现
   - baseline smoke test 可以视为已完成
-  - 现在应按计划进入测量模型层
+  - 现在应从“测量模型层接入”转到“measurement-aware regularization 最小实现”

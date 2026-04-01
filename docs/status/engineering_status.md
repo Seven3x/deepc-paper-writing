@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 15:02
+最后更新时间：2026-04-01 15:14
 
 ## 目标
 
@@ -37,6 +37,12 @@
 - 已新增 `deepc/.gitignore`，忽略缓存和运行产物目录
 - 已修复 `figure8` 参考生成中的除零 warning
 - 已将 `linear MPC` 接入 `deepc/run_experiment.py`
+- 已在 `quadcopter.py` 接入测量层失配注入：
+  - `yaw bias`
+  - `yaw drift`
+  - 各向异性测量噪声
+- 已在 `run_experiment.py` 暴露测量层 CLI 参数
+- 已新增测量场景对比脚本：`deepc/compare_measurement_scenarios.py`
 
 ## 风险与缺口
 
@@ -63,6 +69,7 @@
 - 已完成 `linear MPC` 最小实现与双轨迹烟测
 - 已完成 `linear MPC` horizon 烟测与长时段边界检查
 - 已完成统一 baseline 对比
+- 已完成测量模型层首轮烟测
 
 ## 本轮执行命令
 
@@ -107,6 +114,16 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_d
   --base-T-ini 4 --base-N 8 --base-lambda-y 300 --base-lambda-g 3 --base-lqr-noise 0.02 \
   --t-ini-values 4,6 --N-values 8,10 --lambda-y-values 300,1000 \
   --lambda-g-values 3,10 --lqr-noise-values 0.02,0.05 --tag round1
+```
+
+测量模型层最小矩阵：
+
+```bash
+MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare_measurement_scenarios.py \
+  --controllers deepc --trajectories step,figure8 \
+  --scenarios nominal,yaw_bias,yaw_drift,anisotropic_noise \
+  --reference-duration 6 --sampling-time 0.1 --dt 0.001 \
+  --seed 42 --measurement-seed 0 --tag stageC_smoke
 ```
 
 ## 关键结果
@@ -362,13 +379,69 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_d
   - 在 `figure8` 上，`MPC` 与 `DeePC` 都明显优于 `LQR`
   - `MPC` 可以保留在对比中，但要明确它不是长时段 `step` 的强 baseline
 
+### 测量模型层首轮烟测
+
+- 汇总目录：
+  - `deepc/Results/measurement_compare_20260401_151253_stageC_smoke`
+- 当前场景：
+  - `nominal`
+  - `yaw_bias = 0.2 rad`
+  - `yaw_drift = 0.03 rad/s`
+  - `anisotropic_noise = [0.005, 0.005, 0.12, 0.01, 0.01, 0.01]`
+- 覆盖轨迹：
+  - `step`
+  - `figure8`
+- 覆盖控制器：
+  - `regularized DeePC`
+- 稳定性结果：
+  - `4 / 8` 运行通过稳定门槛
+  - `nominal` 与 `yaw_bias` 通过
+  - `yaw_drift` 与 `anisotropic_noise` 未通过
+
+- `step, 6s`
+  - `nominal`
+    - `rmse_position = 0.1483`
+    - `rmse_yaw = 0.0430`
+  - `yaw_bias`
+    - `rmse_position = 0.1400`
+    - `rmse_yaw = 0.1854`
+  - `yaw_drift`
+    - `rmse_position = 0.1355`
+    - `rmse_yaw = 0.8191`
+    - 未通过稳定门槛
+  - `anisotropic_noise`
+    - `rmse_position = 1.1439`
+    - `rmse_yaw = 2.8229`
+    - 未通过稳定门槛
+
+- `figure8, 6s`
+  - `nominal`
+    - `rmse_position = 0.0552`
+    - `rmse_yaw = 0.0498`
+  - `yaw_bias`
+    - `rmse_position = 0.0556`
+    - `rmse_yaw = 0.1813`
+  - `yaw_drift`
+    - `rmse_position = 1.8284`
+    - `final_position_error_norm = 20.4180`
+    - 未通过稳定门槛
+  - `anisotropic_noise`
+    - `rmse_position = 4.5675`
+    - `final_position_error_norm = 35.9434`
+    - 未通过稳定门槛
+
+- 当前解释：
+  - `uniform regularized DeePC` 对静态 `yaw bias` 还有一定容忍度
+  - `yaw drift` 已足以显著拉高 `yaw` 误差，并在 `figure8` 上带来位置层面的明显崩坏
+  - 各向异性噪声会同时破坏 `step` 与 `figure8` 的稳定性
+  - 这已经足够支撑下一步进入 `measurement-aware regularization`
+  - 当前 `LQR` 与 `linear MPC` 仍按状态反馈实现，测量层扰动暂时主要直接作用于 `DeePC`
+
 ## 下一步
 
-- 以 `N=10, T_ini=4, lambda_y=300, lambda_g=3, lqr_noise=0.02` 作为当前候选 baseline
-- 短程候选已升级为分层结论：
-  - 短程稳定候选：`T_ini=4, N=10, lambda_y=300, lambda_g=3`
-  - 长时段低噪声候选：`T_ini=8, N=10, lambda_y=1000, lambda_g=10`
+- baseline smoke test 已结束，不再继续扩大 nominal 对比
+- 测量模型层已接入并完成首轮烟测
 - 下一步建议：
-  - 结束 baseline smoke test
-  - 按计划进入测量模型层：`yaw bias / yaw drift / anisotropic noise`
-  - 如需补充，只保留少量 baseline 复核，不再大规模重复 nominal 对比
+  - 在 `Controllers/deepc.py` 上实现第一版 `manual group-wise regularization`
+  - 优先针对 `yaw drift` 与 `anisotropic noise` 做最小主实验
+  - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实
