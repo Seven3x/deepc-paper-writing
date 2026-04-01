@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 13:50
+最后更新时间：2026-04-01 15:02
 
 ## 目标
 
@@ -13,7 +13,7 @@
 
 ## 当前状态
 
-- 状态：已明确短程稳定区间，并找到一组长时段 `step` 可用候选
+- 状态：baseline 三件套均已接入工程入口
 - 主执行目录：`/home/roxy/deepc-paper`
 - 代码入口：`deepc/main.py`
 - 已发现 conda：`/home/roxy/miniconda3/bin/conda`
@@ -26,7 +26,7 @@
 - 当前仓库已有控制器实现：
   - `deepc/Controllers/lqr.py`
   - `deepc/Controllers/deepc.py`
-- 当前仓库未看到现成 `linear MPC` 控制器文件
+- `linear MPC` 已新增实现：`deepc/Controllers/linear_mpc.py`
 - 当前主入口 `deepc/main.py` 为交互式脚本，不适合批量复现实验
 - 当前代码内部原先使用了硬编码目录 `DeePC_Quadcopter/...`，已改为基于 `deepc/paths.py` 的相对输出目录
 - 已新增非交互实验入口：`deepc/run_experiment.py`
@@ -36,10 +36,11 @@
 - 已新增 OFAT 烟测脚本：`deepc/sweep_deepc_smoke.py`
 - 已新增 `deepc/.gitignore`，忽略缓存和运行产物目录
 - 已修复 `figure8` 参考生成中的除零 warning
+- 已将 `linear MPC` 接入 `deepc/run_experiment.py`
 
 ## 风险与缺口
 
-- `linear MPC` baseline 目前仍是实现缺口
+- `linear MPC` 已完成 horizon 烟测，但长时段 `step` 仍明显偏弱
 - 第一轮稳定区间只覆盖了较短 `step` 烟测，还没有跨轨迹验证
 - 当前稳定区间已覆盖短程 `step + figure8`
 - 长时段验证已完成，`step` 与 `figure8` 的难度明显不同
@@ -59,6 +60,9 @@
 - 已完成第一轮 OFAT 烟测
 - 已完成第二轮多随机种子、多轨迹验证
 - 已完成第三轮长时段验证与组合修正
+- 已完成 `linear MPC` 最小实现与双轨迹烟测
+- 已完成 `linear MPC` horizon 烟测与长时段边界检查
+- 已完成统一 baseline 对比
 
 ## 本轮执行命令
 
@@ -116,6 +120,54 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_d
   - `rmse_yaw = 0.00178`
   - `final_position_error_norm = 0.1294`
 - 结论：最小 `LQR` 跟踪可运行且末端误差不大，可作为工程 sanity check
+
+### `linear MPC` 烟测
+
+- 实现文件：`deepc/Controllers/linear_mpc.py`
+- 运行入口：`deepc/run_experiment.py --controller mpc`
+- `step` 结果目录：`deepc/Results/mpc_step_20260401_145247_smoke`
+  - `rmse_position = 0.1683`
+  - `rmse_yaw = 0.3542`
+  - `final_position_error_norm = 0.00050`
+- `figure8` 结果目录：`deepc/Results/mpc_figure8_20260401_145304_smoke`
+  - `rmse_position = 0.0577`
+  - `rmse_yaw = 0.00213`
+  - `final_position_error_norm = 0.0247`
+- 结论：
+  - 工程上已经跑通 `linear MPC` baseline
+  - 当前 `N=10` 的 `step` yaw 指标一般，后续仍值得单独调 horizon
+
+### `linear MPC` horizon 烟测
+
+- 轨迹：`step`, `reference_duration = 3`
+  - `N=6`: `rmse_position = 0.2695`, `rmse_yaw = 0.9593`
+  - `N=8`: `rmse_position = 0.2371`, `rmse_yaw = 0.7190`
+  - `N=10`: `rmse_position = 0.1683`, `rmse_yaw = 0.3542`
+  - `N=12`: `rmse_position = 0.1653`, `rmse_yaw = 0.2676`
+  - `N=16`: `rmse_position = 0.1648`, `rmse_yaw = 0.2461`
+- 轨迹：`figure8`, `reference_duration = 3`
+  - `N=6~16` 基本都稳定，指标差异很小
+  - `rmse_position` 基本在 `0.0577 ~ 0.0580`
+  - `rmse_yaw` 基本在 `0.0019 ~ 0.0021`
+- 结论：
+  - `step` 对 horizon 明显敏感
+  - `N=12` 是当前较合理的折中点
+  - `N=16` 比 `N=12` 只带来很小收益，不值得默认使用
+
+### `linear MPC` 长时段边界
+
+- `step, reference_duration = 6, N = 12`
+  - 结果目录：`deepc/Results/mpc_step_20260401_145733_mpc_long_N12_fix`
+  - `rmse_position = 1.4057`
+  - `rmse_yaw = 4.5261`
+  - `final_position_error_norm = 5.7319`
+  - 结论：能跑完，但控制质量明显不够，不适合作为长时段 `step` 强 baseline
+- `figure8, reference_duration = 6, N = 12`
+  - 结果目录：`deepc/Results/mpc_figure8_20260401_145802_mpc_long_N12_fix`
+  - `rmse_position = 0.0413`
+  - `rmse_yaw = 0.00476`
+  - `final_position_error_norm = 0.0610`
+  - 结论：长时段 `figure8` 仍表现稳定
 
 ### `regularized DeePC` 烟测
 
@@ -267,6 +319,49 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_d
   - `step` 轨迹
   - 更高初始激励噪声
 
+### 统一 baseline 对比
+
+- 汇总目录：
+  - `deepc/Results/baseline_compare_20260401_150138_smoke`
+- 覆盖控制器：
+  - `LQR`
+  - `linear MPC (N=12)`
+  - `regularized DeePC`
+- 覆盖轨迹：
+  - `step`
+  - `figure8`
+- 稳定性结果：
+  - `5 / 6` 运行通过稳定门槛
+  - 唯一未通过的是 `MPC + step`
+
+- `step, 6s`
+  - `LQR`
+    - `rmse_position = 0.4140`
+    - `rmse_yaw = 0.0018`
+  - `MPC`
+    - `rmse_position = 1.4057`
+    - `rmse_yaw = 4.5261`
+    - 未通过稳定门槛
+  - `DeePC`
+    - `rmse_position = 0.1483`
+    - `rmse_yaw = 0.0430`
+
+- `figure8, 6s`
+  - `LQR`
+    - `rmse_position = 0.3208`
+    - `final_position_error_norm = 0.9367`
+  - `MPC`
+    - `rmse_position = 0.0413`
+    - `rmse_yaw = 0.0048`
+  - `DeePC`
+    - `rmse_position = 0.0552`
+    - `rmse_yaw = 0.0498`
+
+- 结论：
+  - 在 nominal、长时段 `step` 上，当前最强 baseline 是调过参的 `regularized DeePC`
+  - 在 `figure8` 上，`MPC` 与 `DeePC` 都明显优于 `LQR`
+  - `MPC` 可以保留在对比中，但要明确它不是长时段 `step` 的强 baseline
+
 ## 下一步
 
 - 以 `N=10, T_ini=4, lambda_y=300, lambda_g=3, lqr_noise=0.02` 作为当前候选 baseline
@@ -274,6 +369,6 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/sweep_d
   - 短程稳定候选：`T_ini=4, N=10, lambda_y=300, lambda_g=3`
   - 长时段低噪声候选：`T_ini=8, N=10, lambda_y=1000, lambda_g=10`
 - 下一步建议：
-  - 对长时段候选做多种子复核
-  - 若仍稳定，再补 `linear MPC`
-  - 若用户更重视高噪声稳健性，再转入测量失配层而不是继续硬调 uniform regularization
+  - 结束 baseline smoke test
+  - 按计划进入测量模型层：`yaw bias / yaw drift / anisotropic noise`
+  - 如需补充，只保留少量 baseline 复核，不再大规模重复 nominal 对比
