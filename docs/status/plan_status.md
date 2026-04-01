@@ -1,6 +1,6 @@
 # 总计划状态
 
-最后更新时间：2026-04-01 16:04
+最后更新时间：2026-04-01 16:08
 
 ## 总体目标
 
@@ -77,8 +77,10 @@
   - `deepc/Results/deepc_reg_compare_20260401_155748_manual_v1`
   - `deepc/Results/deepc_reg_compare_20260401_160021_yaw_only_v1`
   - `deepc/Results/deepc_reg_compare_20260401_160226_yaw_only_v2`
+  - `deepc/Results/deepc_reg_compare_20260401_160622_measurement_noise_v1`
   - `manual_grouped` 失败
   - `manual_yaw_only` 保守版可保 nominal，但对核心坏场景没有稳定优势
+  - `measurement_noise` 能保 nominal，并在 `anisotropic step` 上出现部分改善，但仍未形成稳定优势
 - 当前阶段性判断：
   - 工程改造方向是对的
   - 论文主线暂时不要往前推
@@ -87,4 +89,5 @@
   - baseline smoke test 可以视为已完成
   - 测量模型层接入已完成
   - 第一版手工权重不能直接当成论文方法
-  - 现在应从“手工盲调权重”转到“基于测量统计构造权重”
+  - `measurement_noise` 是当前最合理的起点，但还不能单独支撑主 claim
+  - 现在应从“手工盲调权重”转到“基于残差统计构造权重”

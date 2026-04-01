@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 16:04
+最后更新时间：2026-04-01 16:08
 
 ## 目标
 
@@ -45,6 +45,7 @@
 - 已新增测量场景对比脚本：`deepc/compare_measurement_scenarios.py`
 - 已在 `Controllers/deepc.py` 接入第一版非均匀 `sigma_y` 权重
 - 已新增正则化对比脚本：`deepc/compare_deepc_regularization.py`
+- 已接入基于测量噪声统计的自动权重模式：`measurement_noise`
 
 ## 风险与缺口
 
@@ -494,12 +495,43 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
     - 基于场景统计的权重标定
     - 或更细的 regularization 结构，而不只是单纯缩放 `sigma_y`
 
+### 第一版 `measurement_noise` 自动权重
+
+- 结果目录：
+  - `deepc/Results/deepc_reg_compare_20260401_160622_measurement_noise_v1`
+- 权重来源：
+  - 直接由测量噪声标准差 `noise_std` 构造
+  - nominal 场景自动退化回 `uniform`
+- 结果：
+  - nominal：
+    - `step` 与 `figure8` 和 `uniform` 完全一致
+  - `yaw_drift`：
+    - 与 `uniform` 完全一致
+    - 说明单靠 `noise_std` 处理不了偏置/漂移型失配
+  - `anisotropic_noise, step`：
+    - `rmse_yaw` 从 `2.8229` 降到 `2.2795`
+    - `max_abs_yaw_error` 从 `20.3858` 降到 `14.6244`
+    - 位置误差基本不变
+    - 但仍未通过稳定门槛
+  - `anisotropic_noise, figure8`：
+    - 明显更差，`rmse_yaw = 7.6790`
+
+- 当前判断：
+  - 这是目前最合理的 measurement-aware 起点，因为：
+    - 不破坏 nominal
+    - 对异方差 `step` 至少出现了正确方向的改善
+  - 但它还远远不够支撑主实验结论
+  - 后续若继续，应优先做：
+    - 基于残差统计而不是仅 `noise_std`
+    - 或对 `step` 与 `figure8` 分开标定
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
 - 测量模型层已接入并完成首轮烟测
 - 下一步建议：
   - 暂停继续盲调 `manual weighting`
-  - 优先做基于测量统计的权重构造方式
+  - 以 `measurement_noise` 作为当前最合理的 measurement-aware 起点
+  - 下一步优先做基于残差统计的权重构造方式
   - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实
