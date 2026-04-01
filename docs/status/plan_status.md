@@ -1,6 +1,6 @@
 # 总计划状态
 
-最后更新时间：2026-04-01 15:14
+最后更新时间：2026-04-01 16:04
 
 ## 总体目标
 
@@ -30,7 +30,7 @@
 
 ### 阶段 3：measurement-aware regularization
 
-- 状态：未开始
+- 状态：进行中，已完成第一轮 `manual weighting` 探索，但当前版本未形成稳定优势
 - 目标：在现有 regularized DeePC 上加入 measurement-aware / covariance-aware 权重
 
 ### 阶段 4：论文写作
@@ -73,10 +73,18 @@
   - `deepc/Results/measurement_compare_20260401_151253_stageC_smoke`
   - `yaw bias` 尚可承受
   - `yaw drift / anisotropic noise` 会明显拖坏当前 `uniform regularized DeePC`
+- 已完成第一轮方法探索：
+  - `deepc/Results/deepc_reg_compare_20260401_155748_manual_v1`
+  - `deepc/Results/deepc_reg_compare_20260401_160021_yaw_only_v1`
+  - `deepc/Results/deepc_reg_compare_20260401_160226_yaw_only_v2`
+  - `manual_grouped` 失败
+  - `manual_yaw_only` 保守版可保 nominal，但对核心坏场景没有稳定优势
 - 当前阶段性判断：
   - 工程改造方向是对的
   - 论文主线暂时不要往前推
   - 短程稳定 baseline 基本成立
   - 长时段低噪声 baseline 也已出现
   - baseline smoke test 可以视为已完成
-  - 现在应从“测量模型层接入”转到“measurement-aware regularization 最小实现”
+  - 测量模型层接入已完成
+  - 第一版手工权重不能直接当成论文方法
+  - 现在应从“手工盲调权重”转到“基于测量统计构造权重”

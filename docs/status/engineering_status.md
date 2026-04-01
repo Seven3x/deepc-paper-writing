@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 15:14
+最后更新时间：2026-04-01 16:04
 
 ## 目标
 
@@ -43,6 +43,8 @@
   - 各向异性测量噪声
 - 已在 `run_experiment.py` 暴露测量层 CLI 参数
 - 已新增测量场景对比脚本：`deepc/compare_measurement_scenarios.py`
+- 已在 `Controllers/deepc.py` 接入第一版非均匀 `sigma_y` 权重
+- 已新增正则化对比脚本：`deepc/compare_deepc_regularization.py`
 
 ## 风险与缺口
 
@@ -70,6 +72,7 @@
 - 已完成 `linear MPC` horizon 烟测与长时段边界检查
 - 已完成统一 baseline 对比
 - 已完成测量模型层首轮烟测
+- 已完成第一轮 `manual weighting` 方法探索
 
 ## 本轮执行命令
 
@@ -124,6 +127,17 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   --scenarios nominal,yaw_bias,yaw_drift,anisotropic_noise \
   --reference-duration 6 --sampling-time 0.1 --dt 0.001 \
   --seed 42 --measurement-seed 0 --tag stageC_smoke
+```
+
+第一轮正则化对比：
+
+```bash
+MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare_deepc_regularization.py \
+  --trajectories step,figure8 --scenarios nominal,yaw_drift,anisotropic_noise \
+  --variants uniform,manual_yaw_only \
+  --manual-yaw-only-weights 1,1,0.5,1,1,1 \
+  --reference-duration 6 --sampling-time 0.1 --dt 0.001 \
+  --seed 42 --measurement-seed 0 --tag yaw_only_v2
 ```
 
 ## 关键结果
@@ -437,11 +451,55 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 这已经足够支撑下一步进入 `measurement-aware regularization`
   - 当前 `LQR` 与 `linear MPC` 仍按状态反馈实现，测量层扰动暂时主要直接作用于 `DeePC`
 
+### 第一轮 `manual weighting` 探索
+
+- 核心改动：
+  - 在 `sigma_y` 上支持：
+    - `uniform`
+    - `manual_grouped`
+    - `manual_output`
+- 汇总目录：
+  - `deepc/Results/deepc_reg_compare_20260401_155748_manual_v1`
+  - `deepc/Results/deepc_reg_compare_20260401_160021_yaw_only_v1`
+  - `deepc/Results/deepc_reg_compare_20260401_160226_yaw_only_v2`
+
+- `manual_grouped`，即整体下调姿态组权重：
+  - 配置：`attitude_weight = 0.2`, `position_weight = 1.0`
+  - 结论：方向错误
+  - 在 nominal 场景就明显破坏闭环，不能继续沿这条线推进
+
+- `manual_yaw_only v1`，即只下调 `psi` 到 `0.2`：
+  - 结论：过于激进
+  - `step` nominal 还能跑，但 `figure8` nominal 已明显变差
+  - 不适合作为默认候选
+
+- `manual_yaw_only v2`，即只下调 `psi` 到 `0.5`：
+  - 结果目录：`deepc/Results/deepc_reg_compare_20260401_160226_yaw_only_v2`
+  - nominal：
+    - `step` 略差于 `uniform`
+    - `figure8` 基本持平
+  - `yaw_drift`：
+    - `step` 的 `final_position_error_norm` 从 `0.1171` 降到 `0.0308`
+    - 但 `rmse_yaw` 从 `0.8191` 升到 `0.8468`
+    - 仍未过稳定门槛
+    - `figure8` 仍劣于 `uniform`
+  - `anisotropic_noise`：
+    - `step` 只有极小幅改善
+    - `figure8` 明显更差
+
+- 当前判断：
+  - 第一版手工权重还不能支撑主 claim
+  - 简单“下调坏通道权重”不是充分条件
+  - 下一步不应继续盲调单个手工权重，而应改成：
+    - 基于场景统计的权重标定
+    - 或更细的 regularization 结构，而不只是单纯缩放 `sigma_y`
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
 - 测量模型层已接入并完成首轮烟测
 - 下一步建议：
-  - 在 `Controllers/deepc.py` 上实现第一版 `manual group-wise regularization`
-  - 优先针对 `yaw drift` 与 `anisotropic noise` 做最小主实验
+  - 暂停继续盲调 `manual weighting`
+  - 优先做基于测量统计的权重构造方式
+  - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实
