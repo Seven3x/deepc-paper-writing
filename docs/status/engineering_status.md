@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 16:08
+最后更新时间：2026-04-01 16:56
 
 ## 目标
 
@@ -46,6 +46,7 @@
 - 已在 `Controllers/deepc.py` 接入第一版非均匀 `sigma_y` 权重
 - 已新增正则化对比脚本：`deepc/compare_deepc_regularization.py`
 - 已接入基于测量噪声统计的自动权重模式：`measurement_noise`
+- 已接入基于测量残差统计的自动权重模式：`residual_stats`
 
 ## 风险与缺口
 
@@ -525,6 +526,40 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
     - 基于残差统计而不是仅 `noise_std`
     - 或对 `step` 与 `figure8` 分开标定
 
+### 第一版 `residual_stats` 自动权重
+
+- 结果目录：
+  - `deepc/Results/deepc_reg_compare_20260401_165400_residual_stats_v1`
+- 权重来源：
+  - 初始数据阶段的测量残差 `y_measured - C x_true`
+  - 用每通道残差 RMS 生成 `sigma_y` 权重
+  - 当前实现是仿真版残差统计，依赖已知真状态
+
+- 结果：
+  - nominal：
+    - `step` 与 `figure8` 都和 `uniform` 完全一致
+    - 说明它不会破坏 baseline
+  - `yaw_drift`：
+    - 自动把 `psi` 权重压到 `0.1`
+    - 但 `step` 变差：
+      - `rmse_yaw: 0.8191 -> 0.9582`
+      - `final_position_error_norm: 0.1171 -> 0.3225`
+    - `figure8` 也明显更差：
+      - `rmse_position: 1.8284 -> 3.2597`
+  - `anisotropic_noise, step`：
+    - 和 `measurement_noise` 基本同量级
+    - `rmse_yaw: 2.8229 -> 2.2874`
+    - `max_abs_yaw_error: 20.3858 -> 14.6264`
+    - 但位置指标仍没回到稳定区
+  - `anisotropic_noise, figure8`：
+    - 明显更差，`rmse_yaw = 17.2465`
+
+- 当前判断：
+  - `residual_stats` 比手工权重更干净，也不会破坏 nominal
+  - 但它并没有优于 `measurement_noise`
+  - 对 `yaw_drift` 没形成正收益，对 `figure8` 还会放大失败
+  - 这说明“只靠单层 per-output slack reweighting”大概率不够
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
@@ -532,6 +567,10 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
 - 下一步建议：
   - 暂停继续盲调 `manual weighting`
   - 以 `measurement_noise` 作为当前最合理的 measurement-aware 起点
-  - 下一步优先做基于残差统计的权重构造方式
+  - `residual_stats` 已完成首轮验证，但当前不优于 `measurement_noise`
+  - 下一步不要继续堆单层输出权重
+  - 更合理的是：
+    - 试 `yaw-only` 输出裁剪基线 `xyz`
+    - 或改 regularization 结构，而不只是缩放 `sigma_y`
   - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实
