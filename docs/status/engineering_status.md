@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 17:14
+最后更新时间：2026-04-01 17:20
 
 ## 目标
 
@@ -50,6 +50,7 @@
 - 已接入可切换输出集合：`xyzpsi / xyz`
 - 已接入 `RandomExcitationController`，用于需要额外初始激励的数据收集场景
 - 已接入 `block_l2` 结构：对 `roll/pitch / yaw / position` 三块分别惩罚
+- 已接入 `drop_yaw_past` 结构：在 past consistency 中直接去掉 `yaw` 行
 
 ## 风险与缺口
 
@@ -616,19 +617,51 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 至少在当前公式下，“把 `yaw` 单独成块”还不足以改善核心坏场景
   - 继续在这条线上细扫超参，收益预期不高
 
+### 第一版 `drop_yaw_past` 结构
+
+- 核心想法：
+  - 不再改 `sigma_y` 代价
+  - 直接在 `Y_p g = y_ini` 的 past consistency 里删掉 `yaw` 行
+  - 只保留 `roll/pitch/position` 的硬一致性
+
+- 结果目录：
+  - `deepc/Results/deepc_step_20260401_172027_drop_yaw_past_aniso`
+  - `deepc/Results/deepc_step_20260401_172028_drop_yaw_past_drift`
+
+- 结果：
+  - `anisotropic_noise + step`
+    - `rmse_yaw = 1.6446`
+    - 相比：
+      - `uniform = 2.8229`
+      - `measurement_noise = 2.2795`
+    - 说明在这个场景上它是目前最强的方向
+    - 但位置误差没有同步进入稳定区：
+      - `rmse_position = 1.3600`
+      - `final_position_error_norm = 9.8907`
+  - `yaw_drift + step`
+    - 明显更差：
+      - `rmse_position = 2.5933`
+      - `rmse_yaw = 2.5150`
+      - `final_position_error_norm = 26.6785`
+
+- 当前判断：
+  - 这条结构第一次给出了“在异方差噪声场景上明显优于现有 weighting 方案”的信号
+  - 但它对 `yaw_drift` 明显不鲁棒
+  - 所以它还不能直接作为统一主方法
+  - 更像是：
+    - `anisotropic_noise` 的有效结构线索
+    - 但不适合直接覆盖 `yaw_drift`
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
 - 测量模型层已接入并完成首轮烟测
 - 下一步建议：
-  - 暂停继续盲调 `manual weighting`
-  - 以 `measurement_noise` 作为当前最合理的 measurement-aware 起点
-  - `residual_stats` 已完成首轮验证，但当前不优于 `measurement_noise`
-  - `xyz-only` 已验证为当前工程下的弱基线
-  - `block_l2` 首轮也未形成收益
-  - 下一步不要继续堆单层输出权重，也不要继续在 `xyz-only / block_l2` 上大规模调参
-  - 更合理的是：
-    - 改 DeePC 约束结构，而不只是改 `sigma_y` 代价
-    - 或做显式的 `yaw` 通道 consistency 剪枝 / 放松机制
+  - `manual weighting / residual_stats / block_l2` 这三条线都不符合预期
+  - `drop_yaw_past` 只在 `anisotropic_noise` 上显出强正向信号，但在 `yaw_drift` 上失败
+  - 这意味着当前 `plan` 的“统一 measurement-aware 方法”实现路线不符合预期，需要收缩
+  - 更合理的收缩方式：
+    - 把主问题先收窄到 `anisotropic noise`
+    - 或把方法定位改成“场景相关的 channel pruning / consistency gating”
   - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实

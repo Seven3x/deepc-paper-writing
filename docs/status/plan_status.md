@@ -1,6 +1,6 @@
 # 总计划状态
 
-最后更新时间：2026-04-01 17:14
+最后更新时间：2026-04-01 17:20
 
 ## 总体目标
 
@@ -82,12 +82,16 @@
   - `deepc/Results/deepc_step_20260401_170614_xyz_nom_b`
   - `deepc/Results/deepc_figure8_20260401_170636_xyz_nom_fig8`
   - `deepc/Results/deepc_step_20260401_171424_block_y100`
+  - `deepc/Results/deepc_step_20260401_172027_drop_yaw_past_aniso`
+  - `deepc/Results/deepc_step_20260401_172028_drop_yaw_past_drift`
   - `manual_grouped` 失败
   - `manual_yaw_only` 保守版可保 nominal，但对核心坏场景没有稳定优势
   - `measurement_noise` 能保 nominal，并在 `anisotropic step` 上出现部分改善，但仍未形成稳定优势
   - `residual_stats` 也能保 nominal，但不优于 `measurement_noise`，且在 `yaw_drift / figure8` 上更差
   - `xyz-only DeePC` 已可运行，但 nominal 就明显偏弱，可视为 `pruning` 负对照而非强 baseline
   - `block_l2` 首轮验证也没有优于 `measurement_noise`
+  - `drop_yaw_past` 在 `anisotropic_noise + step` 上首次出现明显优于现有 weighting 的信号
+  - 但 `drop_yaw_past` 在 `yaw_drift + step` 上明显失败
 - 当前阶段性判断：
   - 工程改造方向是对的
   - 论文主线暂时不要往前推
@@ -99,5 +103,6 @@
   - `measurement_noise` 是当前最合理的起点，但还不能单独支撑主 claim
   - 第一版 `residual_stats` 也已验证，但没有形成更强结果
   - `xyz-only` 基线也已补完阶段性判断，但它没有构成更强路线
-  - 第一版 `block_l2` 也没有形成更强路线
-  - 现在不应继续只做 `sigma_y` 代价层的改动，应转向约束结构层的改动
+  - 第一版 `block_l2` 没有形成更强路线
+  - 约束结构层的 `drop_yaw_past` 在单一场景上有效，但不满足统一主方法预期
+  - 现在需要判断是否收缩问题到 `anisotropic noise`，而不是继续强撑统一方法
