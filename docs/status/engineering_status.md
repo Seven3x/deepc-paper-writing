@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 17:06
+最后更新时间：2026-04-01 17:14
 
 ## 目标
 
@@ -49,6 +49,7 @@
 - 已接入基于测量残差统计的自动权重模式：`residual_stats`
 - 已接入可切换输出集合：`xyzpsi / xyz`
 - 已接入 `RandomExcitationController`，用于需要额外初始激励的数据收集场景
+- 已接入 `block_l2` 结构：对 `roll/pitch / yaw / position` 三块分别惩罚
 
 ## 风险与缺口
 
@@ -586,6 +587,35 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 这意味着在当前工程设置里，简单裁掉 `yaw` 通道并不能自动形成强 baseline
   - 它可以保留为 `pruning` 负对照，但目前不值得继续大规模调参
 
+### 第一版 `block_l2` 结构
+
+- 核心想法：
+  - 不再对整个 `sigma_y` 用单一范数
+  - 改成对 `roll/pitch`、`yaw`、`position` 三个块分别加范数惩罚
+- 最小验证场景：
+  - `anisotropic_noise + step, 6s`
+  - `yaw` 块系数扫描：
+    - `500`
+    - `100`
+    - `50`
+- 结果目录：
+  - `deepc/Results/deepc_step_20260401_171424_block_y500`
+  - `deepc/Results/deepc_step_20260401_171424_block_y100`
+  - `deepc/Results/deepc_step_20260401_171424_block_y50`
+- 结果：
+  - 三组几乎没有可见差异
+  - 代表性结果 `yaw=100`：
+    - `rmse_position = 1.1454`
+    - `rmse_yaw = 2.8402`
+    - `final_position_error_norm = 7.9443`
+  - 明显差于 `measurement_noise`：
+    - `measurement_noise` 在同场景下 `rmse_yaw = 2.2795`
+
+- 当前判断：
+  - 这版 `block_l2` 没形成正收益
+  - 至少在当前公式下，“把 `yaw` 单独成块”还不足以改善核心坏场景
+  - 继续在这条线上细扫超参，收益预期不高
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
@@ -595,9 +625,10 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 以 `measurement_noise` 作为当前最合理的 measurement-aware 起点
   - `residual_stats` 已完成首轮验证，但当前不优于 `measurement_noise`
   - `xyz-only` 已验证为当前工程下的弱基线
-  - 下一步不要继续堆单层输出权重，也不要继续在 `xyz-only` 上大规模调参
+  - `block_l2` 首轮也未形成收益
+  - 下一步不要继续堆单层输出权重，也不要继续在 `xyz-only / block_l2` 上大规模调参
   - 更合理的是：
-    - 改 regularization 结构，而不只是缩放 `sigma_y`
-    - 或做更贴近假设的 channel-wise / block-wise consistency 结构
+    - 改 DeePC 约束结构，而不只是改 `sigma_y` 代价
+    - 或做显式的 `yaw` 通道 consistency 剪枝 / 放松机制
   - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实
