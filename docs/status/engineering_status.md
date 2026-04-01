@@ -1,6 +1,6 @@
 # 工程执行状态
 
-最后更新时间：2026-04-01 16:56
+最后更新时间：2026-04-01 17:06
 
 ## 目标
 
@@ -47,6 +47,8 @@
 - 已新增正则化对比脚本：`deepc/compare_deepc_regularization.py`
 - 已接入基于测量噪声统计的自动权重模式：`measurement_noise`
 - 已接入基于测量残差统计的自动权重模式：`residual_stats`
+- 已接入可切换输出集合：`xyzpsi / xyz`
+- 已接入 `RandomExcitationController`，用于需要额外初始激励的数据收集场景
 
 ## 风险与缺口
 
@@ -560,6 +562,30 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 对 `yaw_drift` 没形成正收益，对 `figure8` 还会放大失败
   - 这说明“只靠单层 per-output slack reweighting”大概率不够
 
+### `xyz-only DeePC` 基线尝试
+
+- 工程改动：
+  - `quadcopter.py` 支持 `--output-set xyz`
+  - `run_experiment.py` 支持切换输出集合与 DeePC 初始控制器
+  - `Controllers/deepc.py` 修正了数据长度下界，保证 `xyz` 场景下 Hankel 数据长度足以检验 persistency
+
+- 当前最小验证：
+  - `step, 3s`
+    - 配置：`output_set=xyz, T_ini=4, N=8, lambda_y=300, lambda_g=3`
+    - 结果目录：`deepc/Results/deepc_step_20260401_170614_xyz_nom_b`
+    - `rmse_position = 3.0553`
+    - `final_position_error_norm = 25.6788`
+  - `figure8, 3s`
+    - 同配置
+    - 结果目录：`deepc/Results/deepc_figure8_20260401_170636_xyz_nom_fig8`
+    - `rmse_position = 2.1022`
+    - `final_position_error_norm = 20.4313`
+
+- 当前判断：
+  - `xyz-only DeePC` 已经不是“跑不通”，而是“能跑但 nominal 就明显偏弱”
+  - 这意味着在当前工程设置里，简单裁掉 `yaw` 通道并不能自动形成强 baseline
+  - 它可以保留为 `pruning` 负对照，但目前不值得继续大规模调参
+
 ## 下一步
 
 - baseline smoke test 已结束，不再继续扩大 nominal 对比
@@ -568,9 +594,10 @@ MPLBACKEND=Agg "$HOME/miniconda3/bin/conda" run -n delivery python deepc/compare
   - 暂停继续盲调 `manual weighting`
   - 以 `measurement_noise` 作为当前最合理的 measurement-aware 起点
   - `residual_stats` 已完成首轮验证，但当前不优于 `measurement_noise`
-  - 下一步不要继续堆单层输出权重
+  - `xyz-only` 已验证为当前工程下的弱基线
+  - 下一步不要继续堆单层输出权重，也不要继续在 `xyz-only` 上大规模调参
   - 更合理的是：
-    - 试 `yaw-only` 输出裁剪基线 `xyz`
-    - 或改 regularization 结构，而不只是缩放 `sigma_y`
+    - 改 regularization 结构，而不只是缩放 `sigma_y`
+    - 或做更贴近假设的 channel-wise / block-wise consistency 结构
   - 继续围绕 `yaw drift` 与 `anisotropic noise` 做最小主实验
   - 暂时不扩展到 `mass variation / wind`，先把 measurement-aware 主假设做实

@@ -1,6 +1,6 @@
 # 总计划状态
 
-最后更新时间：2026-04-01 16:56
+最后更新时间：2026-04-01 17:06
 
 ## 总体目标
 
@@ -79,10 +79,13 @@
   - `deepc/Results/deepc_reg_compare_20260401_160226_yaw_only_v2`
   - `deepc/Results/deepc_reg_compare_20260401_160622_measurement_noise_v1`
   - `deepc/Results/deepc_reg_compare_20260401_165400_residual_stats_v1`
+  - `deepc/Results/deepc_step_20260401_170614_xyz_nom_b`
+  - `deepc/Results/deepc_figure8_20260401_170636_xyz_nom_fig8`
   - `manual_grouped` 失败
   - `manual_yaw_only` 保守版可保 nominal，但对核心坏场景没有稳定优势
   - `measurement_noise` 能保 nominal，并在 `anisotropic step` 上出现部分改善，但仍未形成稳定优势
   - `residual_stats` 也能保 nominal，但不优于 `measurement_noise`，且在 `yaw_drift / figure8` 上更差
+  - `xyz-only DeePC` 已可运行，但 nominal 就明显偏弱，可视为 `pruning` 负对照而非强 baseline
 - 当前阶段性判断：
   - 工程改造方向是对的
   - 论文主线暂时不要往前推
@@ -93,4 +96,5 @@
   - 第一版手工权重不能直接当成论文方法
   - `measurement_noise` 是当前最合理的起点，但还不能单独支撑主 claim
   - 第一版 `residual_stats` 也已验证，但没有形成更强结果
-  - 现在不应继续只做 `sigma_y` 单层缩放，应转向更强的结构改动或 `xyz` 基线
+  - `xyz-only` 基线也已补完阶段性判断，但它没有构成更强路线
+  - 现在不应继续只做 `sigma_y` 单层缩放，应转向更强的结构改动
