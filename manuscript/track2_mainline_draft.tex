@@ -1,14 +1,19 @@
-\documentclass[11pt]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{times}
 \usepackage{microtype}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
@@ -20,17 +25,39 @@
   urlcolor=blue
 }
 
-\title{Minimal Warm-Start / Transfer for Fault-Aware DeePC under Single-Rotor Degradation}
-\author{}
-\date{}
+\titleformat{\section}{\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\itshape\normalsize}{\thesubsubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{Track 2 DeePC Manuscript}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{Draft}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 \begin{document}
 
-\maketitle
+\onehalfspacing
 
-\begin{abstract}
+\begin{center}
+    \textbf{\LARGE Minimal Warm-Start / Transfer for Fault-Aware DeePC under Single-Rotor Degradation}
+\end{center}
+
+\vspace{1em}
+
+\section*{Abstract}
 We study data-driven fault-aware DeePC control for a lightweight quadrotor under single-rotor efficiency degradation. Our starting point is a nominal/degraded dual-bank DeePC scaffold. However, the scaffold alone is insufficient for a method-level fault-aware claim: without continued post-fault adaptation, the degraded bank can remain effectively frozen in the same data state as the nominal bank. We therefore add a minimal warm-start / transfer mechanism in which the degraded bank is bootstrapped from a mature nominal bank and continues updating with post-fault samples after fault onset, while the rest of the scaffold remains unchanged. On a fixed benchmark covering \texttt{step} and \texttt{figure8} trajectories, \texttt{mild} and \texttt{severe} degradation, onset \texttt{20.0s}, and 10 seeds, this mechanism yields stable average improvement over the old nominal/degraded banks, while still leaving explicit boundary-case regressions in mild settings. We do not claim superiority to MPC or all-case/all-metric dominance. Instead, the result is positioned as a prototype-level but defensible fault-aware DeePC improvement.
-\end{abstract}
+
+\newpage
+\section*{Main Text}
+
+This manuscript follows the current Track 2 paper boundary: the active mainline is \texttt{deepc\_degraded\_transfer}, the primary claim target is the old dual-bank DeePC scaffold, and MPC is retained only as a stronger reference baseline.
+
+\vspace{1em}
+\tableofcontents
+\newpage
 
 \section{Introduction}
 
@@ -44,39 +71,43 @@ To address this issue, we introduce a minimal warm-start / transfer mechanism. T
 
 The resulting evidence supports a conservative paper position. In the fixed single-rotor degradation matrix used for the paper, \texttt{deepc\_degraded\_transfer} provides stable average gains over the old \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank} baselines. At the same time, the improvement is not uniform across all case-metric pairs, and the method remains weaker than MPC. The contribution of this paper is therefore not a final controller claim. It is a bounded method improvement showing that minimal transfer is the missing mechanism that turns a frozen dual-bank DeePC scaffold into a usable fault-aware prototype.
 
-\section{Problem Setup and Motivation}
+\section{Materials and methods}
+
+\subsection{Problem setup and motivation}
 
 The benchmark in this paper is intentionally narrow. We focus on a lightweight quadrotor simulation subject to single-rotor efficiency degradation. This fault model is useful because it creates a controlled departure from nominal dynamics without expanding into a large family of unrelated failures. The benchmark is restricted to two reference trajectories, \texttt{step} and \texttt{figure8}, and two degradation severities, \texttt{mild\_single\_rotor\_drop} and \texttt{severe\_single\_rotor\_drop}, with a fixed onset time of \texttt{20.0s}. This restriction is deliberate: the paper aims to establish the minimum claim that is currently supported, not to generalize beyond the available evidence.
 
 The old dual-bank scaffold provides two historical baselines. \texttt{deepc\_nominal\_bank} represents the nominal bank path, and \texttt{deepc\_degraded\_bank} represents the degraded bank path without the new transfer mechanism. These baselines remain necessary because the main question is not whether DeePC can beat every external controller, but whether the fault-aware branch becomes meaningfully different and more useful once transfer is added. MPC is still included in the experiments, but only as a stronger reference baseline that anchors the current maturity level of the DeePC prototype.
 
-\section{Method}
-
-\subsection{Baseline Dual-Bank Scaffold}
+\subsection{Baseline dual-bank scaffold}
 
 The baseline scaffold contains two controller variants: \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank}. Both share the same DeePC backbone and operate under the same experimental protocol. The intended interpretation is that one bank reflects nominal operation while the other reflects degraded operation. In practice, however, that interpretation only becomes meaningful if the degraded bank actually evolves differently after fault onset.
 
-\subsection{Failure Mode Without Transfer}
+\subsection{Failure mode without transfer}
 
 The main empirical failure mode is bank freezing. Even after a long pre-fault phase, the degraded bank does not automatically become distinct from the nominal bank. Once both banks have matured under similar nominal data, the degraded branch can remain effectively locked to nominal-like content. In that case, the old scaffold does not provide a strong basis for a fault-aware method claim. The issue is structural: the degraded bank lacks a mechanism for sustained post-fault evolution.
 
-\subsection{Minimal Warm-Start / Transfer Mechanism}
+\subsection{Minimal warm-start / transfer mechanism}
 
 The method change in this paper is intentionally minimal. When the degraded bank is first activated, it is initialized from the already mature nominal bank. After fault onset, the degraded bank continues to update using post-fault sliding-window samples. The implementation uses a simple periodic adaptation flow rather than reconstructing the bank at every step. This gives the degraded branch a practical way to keep incorporating post-fault information while preserving the rest of the scaffold.
 
-\subsection{Why This Is a Method Change Rather Than Tuning}
+\subsection{Why this is a method change rather than tuning}
 
 This modification should not be described as ordinary tuning. The key difference is not a changed penalty weight or a solver setting. The key difference is whether the degraded bank internalizes post-fault data and therefore becomes capable of diverging from the nominal bank after onset. Because the change acts on bank evolution itself, it is better understood as a method-level mechanism change.
 
-\subsection{Scope Boundary}
+\subsection{Scope boundary}
 
 The method boundary is explicit. This paper does not introduce a fault detection module. It does not add complex switching heuristics, broaden the fault family, or claim a full reconfiguration framework. The contribution is narrower: minimal warm-start / transfer makes the degraded branch practically usable within the current dual-bank DeePC scaffold.
 
-\section{Experimental Protocol}
+\subsection{Experimental protocol}
 
 The paper uses one fixed main matrix. The trajectories are \texttt{step} and \texttt{figure8}. The fault scenarios are \texttt{mild\_single\_rotor\_drop} and \texttt{severe\_single\_rotor\_drop}. The fault onset is fixed at \texttt{20.0s}. The controller set is \texttt{deepc\_nominal\_bank}, \texttt{deepc\_degraded\_bank}, \texttt{deepc\_degraded\_transfer}, and \texttt{mpc}. The seed set is 41 through 50, yielding 10 seeds and 160 total runs.
 
 The primary metrics are position RMSE, final position error norm, and yaw RMSE. Success rate is included as a reliability summary. For each case, we aggregate results across seeds using mean and standard deviation, and we use 95\% confidence intervals or equivalent error bars to visualize seed-level uncertainty. To isolate the effect of transfer, we also report deltas of \texttt{deepc\_degraded\_transfer} relative to the old dual-bank baseline. In the strengthened paper matrix, \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank} are numerically identical, so the deltas are the same for both historical baselines.
+
+\subsection{Statistical analysis}
+
+The main analysis is descriptive and comparative across the fixed 10-seed matrix. For each controller-case combination, we report mean and standard deviation over seeds, together with 95\% confidence intervals or equivalent error bars for the seed-level mean estimates. The key method-level comparison is \texttt{deepc\_degraded\_transfer} versus the old dual-bank baselines. MPC is reported as a stronger reference baseline only and is not the main statistical claim target.
 
 \begin{table}[t]
   \centering
@@ -143,8 +174,38 @@ The limitations are direct. Only a single fault family is tested. Only one onset
 
 Future work should remain narrow and subordinate to the current paper boundary. The obvious next technical target is to stabilize the mild-case regressions without reopening broad sweeps or changing the problem definition. After the current writeup is complete, a small targeted robustness check may be justified, but broad onset sweeps, parameter sweeps, new Track 2 variants, or fault-family expansion would move the project back into exploration mode and should stay out of the present paper.
 
-\section{Conclusion}
+\section{Conclusions}
 
 This paper supports a conservative conclusion. Minimal warm-start / transfer is the mechanism that turns the current nominal/degraded DeePC scaffold from a frozen dual-bank construction into a fault-aware controller prototype under single-rotor degradation. The strengthened 10-seed matrix shows stable average gains over the old dual-bank baselines, while also exposing clear boundary cases in the mild settings. The method therefore deserves to be written as a prototype-level but defensible fault-aware DeePC improvement, not as a finalized controller and not as a method that surpasses MPC.
+
+\section{Electronic supplementary information}
+
+Electronic supplementary information should contain the transfer delta table, the boundary-case plot for \texttt{figure8 + mild\_single\_rotor\_drop}, the seed-level summary figure, the delta heatmap, and the average old-versus-transfer overview. These materials support the main text by exposing the mixed cases and uncertainty structure without overloading the main manuscript.
+
+\section{Author contributions}
+
+The authors confirm contribution to the paper as follows: study conception and design, Track 2 experiment framing, and manuscript planning; implementation and experiment execution; analysis and interpretation of results; draft manuscript preparation. Final author-role wording should be filled with actual names and initials before submission.
+
+\section{Acknowledgments}
+
+This section should acknowledge project support, computational resources, and any institutional or funding support used for the Track 2 experiments and manuscript preparation.
+
+\section{Ethical Statement (Optional.)}
+
+Not applicable. This study is based on lightweight quadrotor simulation and does not involve human participants, clinical data, or animal experimentation.
+
+\section{Conflict of interest}
+
+The authors declare that they have no conflict of interest.
+
+\section{Data availability}
+
+The experiment configuration files, code, and aggregated results used in this study are available within the project repository. Additional run artifacts and derived paper tables/figures are available from the corresponding author on reasonable request if needed for reproduction or inspection.
+
+\section{References}
+
+\nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{references}
 
 \end{document}

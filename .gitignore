@@ -1,0 +1,13 @@
+manuscript/build/
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.bcf
+manuscript/*.blg
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+manuscript/*.log
+manuscript/*.out
+manuscript/*.pdf
+manuscript/*.run.xml
+manuscript/*.synctex.gz
+manuscript/*.toc
