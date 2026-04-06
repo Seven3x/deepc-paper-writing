@@ -1,45 +1,56 @@
 # Method Skeleton
 
-## 1. Baseline scaffold
+## 1. Baseline Scaffold (Reference)
 
-Describe the old DeePC dual-bank setup:
+- Controllers in the old dual-bank scaffold:
+  - `deepc_nominal_bank`
+  - `deepc_degraded_bank`
+- Shared structure:
+  - Same DeePC backbone and same experiment protocol.
+  - Degraded branch exists in name but may not evolve differently after fault onset.
 
-- `deepc_nominal_bank`
-- `deepc_degraded_bank`
+## 2. Failure Mode Without Transfer: Bank Freezing
 
-Explain that this scaffold separates the labels, but without continued adaptation after fault onset the two banks can remain effectively identical in their data content.
+- Empirical behavior to state:
+  - Extending pre-fault phase alone does not produce reliable nominal/degraded divergence.
+  - After maturity, degraded bank can stay effectively frozen with nominal-like data content.
+- Method implication:
+  - Dual-bank labels alone are insufficient for fault-aware behavior.
+  - A mechanism for post-fault degraded-bank evolution is required.
 
-## 2. Why the scaffold is insufficient
+## 3. Minimal Warm-Start / Transfer Mechanism
 
-State the failure mode:
+- Mechanism definition:
+  - At degraded bank first activation, initialize from mature nominal bank (`warm-start`).
+  - After fault onset, keep degraded bank adapting using post-fault sliding-window samples (`transfer/adapt`).
+- Implementation shape:
+  - Minimal local addition to bank update flow.
+  - No expansion into detection, mode-estimation, or complex switching policies.
 
-- long pre-fault alone does not create meaningful bank divergence
-- once the banks mature, the old behavior can freeze the data state
-- as a result, the degraded bank does not become a truly fault-aware branch
+## 4. Why This Is Method Change, Not Hyperparameter Tuning
 
-## 3. Minimal transfer mechanism
+- What changes:
+  - Whether degraded bank receives and internalizes post-fault samples.
+  - Whether nominal and degraded banks can diverge in data-state after fault onset.
+- What does not define the change:
+  - Not a weight/lambda sweep.
+  - Not a solver-only tweak.
+- Therefore:
+  - This is a structural bank-evolution mechanism change.
 
-Define the smallest change:
-
-- start the degraded bank from the nominal mature scaffold when needed
-- after fault onset, keep the degraded bank updating with post-fault samples
-- keep the transfer logic simple and local, not coupled with detection, switching heuristics, or new fault models
-
-## 4. Why this is not just tuning
-
-Explain that this is a structural change in bank evolution, not a lambda tweak:
-
-- it changes whether the degraded bank continues to absorb new post-fault data
-- it changes whether the two banks can diverge in content after fault onset
-- it is therefore a mechanism change, not a regularization sweep
-
-## 5. What stays fixed
+## 5. What Stays Fixed (To Isolate Mechanism Effect)
 
 - same quadrotor benchmark
 - same single-rotor degradation setting
 - same comparison set
 - same main matrix
 
-## 6. Method claim boundary
+## 6. Implementation and Claim Boundary
 
-The method claims a minimal fault-aware improvement over the old dual-bank scaffold, not a final control solution and not an MPC replacement.
+- Explicit exclusions:
+  - No fault detection module.
+  - No complex bank switching heuristics.
+  - No broadened multi-fault framework in this paper.
+- Claim scope:
+  - Minimal fault-aware improvement over old dual-bank scaffold.
+  - Prototype-level method contribution, not final controller and not an `mpc` replacement claim.

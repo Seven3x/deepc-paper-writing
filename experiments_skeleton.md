@@ -1,58 +1,40 @@
 # Experiments Skeleton
 
-## Goal
+## Experiment question
 
-Show whether minimal warm-start / transfer is enough to turn the dual-bank DeePC scaffold into a useful fault-aware prototype.
+Test whether minimal warm-start / transfer is enough to make the degraded bank practically useful in the fixed single-rotor degradation setup.
 
-## Main matrix
+## Fixed main matrix (paper-locked)
 
 - trajectories: `step`, `figure8`
 - scenarios: `mild_single_rotor_drop`, `severe_single_rotor_drop`
-- onset: `20.0s`
-- controllers:
-  - `deepc_nominal_bank`
-  - `deepc_degraded_bank`
-  - `deepc_degraded_transfer`
-  - `mpc`
-- seeds:
-  - fixed set of `10` seeds for the strengthened paper matrix, with `41-45` reused and `46-50` newly added
+- fault onset: `20.0s`
+- controllers: `deepc_nominal_bank`, `deepc_degraded_bank`, `deepc_degraded_transfer`, `mpc`
+- seeds: `41-50` (10 seeds total)
+- total runs: `2 x 2 x 4 x 10 = 160`
 
-## Metrics
+## Metrics and aggregation
 
-- position RMSE
-- final position error norm
-- yaw RMSE
-- success rate
-- mean and std across seeds
-- 95 percent CI or error bars
-- transfer delta relative to the old banks
+- primary metrics: position RMSE, final position error norm, yaw RMSE
+- reliability metric: success rate
+- per-case aggregation: mean and std across the 10 seeds
+- uncertainty display: 95% CI / error bars for seed-level mean estimates
+- transfer effect view: `deepc_degraded_transfer - old_bank` deltas, where old_bank is nominal/degraded baseline (identical in this matrix)
 
-## What each result answers
+## Result artifact roles
 
-- Main table: whether transfer changes the average performance profile.
-- Delta table: where transfer helps and where it is still incomplete.
-- Error bars or CI: whether the gain is seed-robust or seed-specific.
-- Advantage case plot: where transfer clearly helps.
-- Boundary case plot: where the gain is partial or uneven.
+- main table (`track2_main_results_table.*`): absolute performance profile of all four controllers on all four case combinations
+- delta table (`track2_degraded_transfer_deltas_table.*`): where transfer improves vs old dual-bank and where it regresses
+- advantage case figure (`track2_case_step_severe.*`): representative combination where transfer improves across core DeePC metrics vs old banks
+- boundary case figure (`track2_case_figure8_mild.*`): representative combination with mixed outcome and explicit remaining weakness
+- CI bars (`track2_main_matrix_ci_bars.*`): seed-robustness check for average gains and boundary variability
 
-## Figures
+## Placement plan
 
-- Main text figure:
-  - representative advantage case
-  - main table
-- Appendix figure:
-  - boundary case
-  - transfer delta table
-  - mean old-bank vs transfer summary plot
+- main text: main table, CI bars, advantage case
+- appendix: delta table, boundary case, seed-level summary, delta heatmap, average old-vs-transfer overview
 
-## Claim boundary
+## Claim boundary carried by this section
 
-This experiment supports a conservative claim:
-
-- minimal transfer is necessary for a fault-aware DeePC prototype with average gains under single-rotor degradation
-
-It does not support:
-
-- universal superiority over all cases
-- superiority over MPC
-- final controller status
+- supported: transfer introduces stable average improvement over old dual-bank DeePC in this fixed setting
+- not supported: all-case/all-metric dominance, superiority to MPC, mature final fault-tolerant controller claim

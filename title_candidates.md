@@ -1,7 +1,7 @@
 # Title Candidates
 
 1. `Minimal Warm-Start / Transfer for Fault-Aware DeePC under Single-Rotor Degradation`
-2. `Turning a Nominal/Degraded DeePC Scaffold into a Fault-Aware Controller with Minimal Transfer`
-3. `A Minimal Transfer Mechanism for Fault-Aware DeePC in Lightly Degraded Quadrotor Simulation`
-4. `Fault-Aware DeePC with Minimal Warm-Start / Transfer for Single-Rotor Efficiency Drop`
-5. `From Frozen Dual Bank to Fault-Aware DeePC: A Minimal Transfer Mechanism for Quadrotor Faults`
+2. `From Frozen Dual-Bank DeePC to a Fault-Aware Prototype via Minimal Warm-Start / Transfer`
+3. `Minimal Transfer for Fault-Aware DeePC under Single-Rotor Efficiency Drop`
+4. `Making a Nominal/Degraded DeePC Scaffold Usable under Single-Rotor Degradation`
+5. `A Conservative Fault-Aware DeePC Prototype with Minimal Warm-Start / Transfer`

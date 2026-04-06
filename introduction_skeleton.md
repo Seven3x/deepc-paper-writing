@@ -1,25 +1,55 @@
 # Introduction Skeleton
 
-## Problem
+## 1. Problem Setting: Data-Driven Quadrotor Control Under Actuator Degradation
 
-DeePC is attractive for quadrotor outer-loop control because it can be data-driven and model-light, but fault-aware operation under actuator degradation is harder than nominal tracking.
+- Context:
+  - Quadrotor outer-loop tracking with DeePC in a model-light, data-driven setting.
+  - Fault type fixed to `single-rotor efficiency degradation` in simulation.
+- Core difficulty:
+  - Nominal tracking is easier than post-fault tracking.
+  - After fault onset, controller must adapt to changed plant behavior, not just keep nominal behavior.
 
-## What breaks in the old scaffold
+## 2. Why the Old Nominal/Degraded Scaffold Is Insufficient
 
-The nominal/degraded dual-bank scaffold looks reasonable at first, but without transfer the degraded bank can remain effectively coupled to the same data state as the nominal bank. In that case, the controller has a bank label, but not a genuinely different adaptive state.
+- Old scaffold controllers:
+  - `deepc_nominal_bank`
+  - `deepc_degraded_bank`
+- Observed issue:
+  - Without transfer, the degraded bank can remain effectively tied to the same data state as nominal.
+  - Bank names differ, but adaptive content does not meaningfully diverge.
 
-## Why this matters
+## 3. Why This Is a Bank-Evolution Mechanism Problem (Not Just Tuning)
 
-If the degraded bank does not keep adapting after fault onset, the scaffold does not yet support a strong fault-aware method claim.
+- Key diagnosis:
+  - Long pre-fault phase alone does not force useful nominal/degraded divergence.
+  - The bottleneck is whether degraded bank keeps evolving with post-fault data.
+- Consequence:
+  - If evolution is frozen, dual-bank scaffold cannot support a defensible fault-aware method claim.
+- Clarification:
+  - This is not primarily a regularization/weight/penalty retuning story.
+  - It is about data-state evolution of the degraded bank.
 
-## What we do
+## 4. What We Change: Minimal Warm-Start / Transfer
 
-We add a minimal warm-start / transfer mechanism so the degraded bank can continue adapting after fault onset, while keeping the rest of the dual-bank structure unchanged.
+- Minimal mechanism:
+  - Warm-start degraded bank from mature nominal bank at first use.
+  - Continue degraded bank updates with post-fault sliding-window samples after fault onset.
+- Scope control:
+  - Keep the dual-bank scaffold and benchmark protocol otherwise fixed.
+  - No added fault detection module, no large reconfiguration framework.
 
-## What we show
+## 5. What the Current Evidence Supports
 
-On a frozen single-rotor degradation benchmark with `step` and `figure8` trajectories, `mild` and `severe` fault settings, and fixed seeds, the transferred degraded bank improves average performance over the old nominal/degraded banks.
+- In the fixed main matrix (`step/figure8`, `mild/severe`, onset `20.0s`, fixed seeds):
+  - `deepc_degraded_transfer` shows stable average improvement versus old dual-bank baselines.
+  - Gains are not uniform across all case-metric pairs.
 
-## Boundary
+## 6. Claim Boundary for This Paper
 
-The method remains a lightweight prototype. It is not claimed to beat MPC, and it is not claimed to be a final controller.
+- Claimable:
+  - A fault-aware DeePC method improvement at prototype level.
+  - Minimal transfer is a necessary mechanism to make degraded branch usable.
+- Not claimable:
+  - Not all-case/all-metric dominance over old banks.
+  - Not superior to `mpc`.
+  - Not a finalized mature fault-tolerant controller.
