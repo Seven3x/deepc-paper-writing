@@ -1,0 +1,7129 @@
+{
+  "config": {
+    "trajectories": [
+      "step",
+      "figure8"
+    ],
+    "scenarios": [
+      "yaw_drift",
+      "anisotropic_noise"
+    ],
+    "variants": [
+      "uniform",
+      "xyz_only",
+      "measurement_noise",
+      "residual_variance"
+    ],
+    "seeds": [
+      7,
+      42,
+      123,
+      314,
+      2026
+    ],
+    "reference_duration": 6.0,
+    "sampling_time": 0.1,
+    "dt": 0.001,
+    "tag": "fairness_fix_mainline_v1"
+  },
+  "aggregated": [
+    {
+      "trajectory": "figure8",
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 4.438497400427912,
+      "rmse_position_std": 2.0401158357683036,
+      "final_position_error_norm_mean": 26.946699347586616,
+      "final_position_error_norm_std": 15.789251152881404,
+      "rmse_yaw_mean": 8.527280822456397,
+      "rmse_yaw_std": 5.458663231087832,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 4.447126019733333,
+      "rmse_position_std": 2.0263802744877735,
+      "final_position_error_norm_mean": 27.05048469466098,
+      "final_position_error_norm_std": 15.635999698493809,
+      "rmse_yaw_mean": 8.544454116586747,
+      "rmse_yaw_std": 5.459900915500553,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "anisotropic_noise",
+      "variant": "uniform",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 4.781476015682255,
+      "rmse_position_std": 1.863584040479579,
+      "final_position_error_norm_mean": 31.278763914858622,
+      "final_position_error_norm_std": 12.632632809409664,
+      "rmse_yaw_mean": 8.069919174738745,
+      "rmse_yaw_std": 5.420541577295329,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 155.61666872066172,
+      "rmse_position_std": 112.82946897186982,
+      "final_position_error_norm_mean": 371.40194022621245,
+      "final_position_error_norm_std": 340.80097912577924,
+      "rmse_yaw_mean": 0.0,
+      "rmse_yaw_std": 0.0,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.8,
+      "rmse_position_mean": 0.15841250904645907,
+      "rmse_position_std": 0.2214199623178342,
+      "final_position_error_norm_mean": 1.6543599632546961,
+      "final_position_error_norm_std": 3.324154495556853,
+      "rmse_yaw_mean": 0.2912300626255882,
+      "rmse_yaw_std": 0.02223598141226733,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "yaw_drift",
+      "variant": "residual_variance",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.8,
+      "rmse_position_mean": 0.45442153255422835,
+      "rmse_position_std": 0.8693530203357326,
+      "final_position_error_norm_mean": 4.825962376173998,
+      "final_position_error_norm_std": 9.978041288884636,
+      "rmse_yaw_mean": 0.31454883812711365,
+      "rmse_yaw_std": 0.046044086461692744,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "yaw_drift",
+      "variant": "uniform",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.8,
+      "rmse_position_mean": 0.15841250904645907,
+      "rmse_position_std": 0.2214199623178342,
+      "final_position_error_norm_mean": 1.6543599632546961,
+      "final_position_error_norm_std": 3.324154495556853,
+      "rmse_yaw_mean": 0.2912300626255882,
+      "rmse_yaw_std": 0.02223598141226733,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "figure8",
+      "scenario": "yaw_drift",
+      "variant": "xyz_only",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 159.80910135104915,
+      "rmse_position_std": 116.46070715733357,
+      "final_position_error_norm_mean": 454.85324595273806,
+      "final_position_error_norm_std": 413.39683110108547,
+      "rmse_yaw_mean": 0.0,
+      "rmse_yaw_std": 0.0,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 1.746695616034912,
+      "rmse_position_std": 0.9892025664072729,
+      "final_position_error_norm_mean": 8.903617958297847,
+      "final_position_error_norm_std": 4.102296138474799,
+      "rmse_yaw_mean": 4.926076586875113,
+      "rmse_yaw_std": 5.9576021686136205,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 1.7479191360006077,
+      "rmse_position_std": 0.991818919626591,
+      "final_position_error_norm_mean": 8.934826870769822,
+      "final_position_error_norm_std": 4.168633737597937,
+      "rmse_yaw_mean": 4.926879819359331,
+      "rmse_yaw_std": 5.957291740381774,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "anisotropic_noise",
+      "variant": "uniform",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 1.7244993918826226,
+      "rmse_position_std": 0.9405278451496134,
+      "final_position_error_norm_mean": 8.97800613475377,
+      "final_position_error_norm_std": 4.180790380632884,
+      "rmse_yaw_mean": 4.945507338432606,
+      "rmse_yaw_std": 5.921238115904948,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 168.89728787556547,
+      "rmse_position_std": 123.39898041151626,
+      "final_position_error_norm_mean": 461.0246151573265,
+      "final_position_error_norm_std": 344.5215648801617,
+      "rmse_yaw_mean": 0.0,
+      "rmse_yaw_std": 0.0,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.2,
+      "rmse_position_mean": 1.2153569215074724,
+      "rmse_position_std": 0.7600105047015386,
+      "final_position_error_norm_mean": 14.508690344416497,
+      "final_position_error_norm_std": 9.553259925209622,
+      "rmse_yaw_mean": 0.4428261610358296,
+      "rmse_yaw_std": 0.03793448705617329,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "yaw_drift",
+      "variant": "residual_variance",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 1.1132127185996759,
+      "rmse_position_std": 0.6649039730148578,
+      "final_position_error_norm_mean": 12.770711778105907,
+      "final_position_error_norm_std": 7.494448532668885,
+      "rmse_yaw_mean": 0.8182184849927723,
+      "rmse_yaw_std": 0.1645345680711694,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "yaw_drift",
+      "variant": "uniform",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.2,
+      "rmse_position_mean": 1.2153569215074724,
+      "rmse_position_std": 0.7600105047015386,
+      "final_position_error_norm_mean": 14.508690344416497,
+      "final_position_error_norm_std": 9.553259925209622,
+      "rmse_yaw_mean": 0.4428261610358296,
+      "rmse_yaw_std": 0.03793448705617329,
+      "all_runs_finite": true
+    },
+    {
+      "trajectory": "step",
+      "scenario": "yaw_drift",
+      "variant": "xyz_only",
+      "num_seeds": 5,
+      "seeds": [
+        7,
+        42,
+        123,
+        314,
+        2026
+      ],
+      "success_rate": 0.0,
+      "rmse_position_mean": 169.577400249943,
+      "rmse_position_std": 128.18291326688308,
+      "final_position_error_norm_mean": 479.7793922075951,
+      "final_position_error_norm_std": 411.137189531409,
+      "rmse_yaw_mean": 0.0,
+      "rmse_yaw_std": 0.0,
+      "all_runs_finite": true
+    }
+  ],
+  "rows": [
+    {
+      "run_name": "deepc_step_20260401_185416_fairness_fix_mainline_v1_yaw_drift_step_uniform_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.9124651662230627,
+        "rmse_position": 1.2547536559239678,
+        "rmse_yaw": 0.42762032355414037,
+        "final_position_error_norm": 15.780872998586354,
+        "max_abs_position_error": 15.16658010361717,
+        "max_abs_yaw_error": 1.1258460559851036,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185425_fairness_fix_mainline_v1_yaw_drift_step_xyz_only_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 114.56250409675111,
+        "rmse_position": 114.56250409675111,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 272.07759766812836,
+        "max_abs_position_error": 265.98823434206736,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185434_fairness_fix_mainline_v1_yaw_drift_step_measurement_noise_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.9124651662230627,
+        "rmse_position": 1.2547536559239678,
+        "rmse_yaw": 0.42762032355414037,
+        "final_position_error_norm": 15.780872998586354,
+        "max_abs_position_error": 15.16658010361717,
+        "max_abs_yaw_error": 1.1258460559851036,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185443_fairness_fix_mainline_v1_yaw_drift_step_residual_variance_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.5763267569375611,
+        "rmse_position": 0.7089241177882932,
+        "rmse_yaw": 0.672053985762289,
+        "final_position_error_norm": 9.354643648077658,
+        "max_abs_position_error": 8.847468453972347,
+        "max_abs_yaw_error": 2.056890473674257,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.29400000000000015,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.17060480649735532,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185451_fairness_fix_mainline_v1_yaw_drift_step_uniform_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.2043889639647602,
+        "rmse_position": 0.14029132658403323,
+        "rmse_yaw": 0.4161983507343136,
+        "final_position_error_norm": 0.044294817907378506,
+        "max_abs_position_error": 0.6904228855483422,
+        "max_abs_yaw_error": 0.8861953585361566,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185500_fairness_fix_mainline_v1_yaw_drift_step_xyz_only_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 62.8553542649138,
+        "rmse_position": 62.8553542649138,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 221.2211742242219,
+        "max_abs_position_error": 203.5476481656138,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185508_fairness_fix_mainline_v1_yaw_drift_step_measurement_noise_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.2043889639647602,
+        "rmse_position": 0.14029132658403323,
+        "rmse_yaw": 0.4161983507343136,
+        "final_position_error_norm": 0.044294817907378506,
+        "max_abs_position_error": 0.6904228855483422,
+        "max_abs_yaw_error": 0.8861953585361566,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185517_fairness_fix_mainline_v1_yaw_drift_step_residual_variance_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.315184937835375,
+        "rmse_position": 0.2017026794096231,
+        "rmse_yaw": 0.6709147188455109,
+        "final_position_error_norm": 1.328409371771267,
+        "max_abs_position_error": 1.1400926475981303,
+        "max_abs_yaw_error": 2.498608622685225,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.29400000000000015,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.17060480649735532,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185526_fairness_fix_mainline_v1_yaw_drift_step_uniform_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.2048561050221727,
+        "rmse_position": 1.672174316127345,
+        "rmse_yaw": 0.42163365057281305,
+        "final_position_error_norm": 20.20586274419727,
+        "max_abs_position_error": 18.824964095650547,
+        "max_abs_yaw_error": 1.2286988898904354,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185535_fairness_fix_mainline_v1_yaw_drift_step_xyz_only_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 211.05775574949823,
+        "rmse_position": 211.05775574949823,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 483.5440687663208,
+        "max_abs_position_error": 517.8944117522287,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185545_fairness_fix_mainline_v1_yaw_drift_step_measurement_noise_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.2048561050221727,
+        "rmse_position": 1.672174316127345,
+        "rmse_yaw": 0.42163365057281305,
+        "final_position_error_norm": 20.20586274419727,
+        "max_abs_position_error": 18.824964095650547,
+        "max_abs_yaw_error": 1.2286988898904354,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185554_fairness_fix_mainline_v1_yaw_drift_step_residual_variance_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.934006701340291,
+        "rmse_position": 1.227896995569122,
+        "rmse_yaw": 0.7660319806525755,
+        "final_position_error_norm": 15.402104547363278,
+        "max_abs_position_error": 15.070738303457839,
+        "max_abs_yaw_error": 4.335816460871927,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.29400000000000015,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.17060480649735532,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185603_fairness_fix_mainline_v1_yaw_drift_step_uniform_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.6536674027789463,
+        "rmse_position": 0.8815134144154989,
+        "rmse_yaw": 0.43983871373887806,
+        "final_position_error_norm": 11.412369373225763,
+        "max_abs_position_error": 11.035266376834985,
+        "max_abs_yaw_error": 0.9711956120187687,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185610_fairness_fix_mainline_v1_yaw_drift_step_xyz_only_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 84.1794761563937,
+        "rmse_position": 84.1794761563937,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 231.8727915883907,
+        "max_abs_position_error": 213.7333811213189,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185619_fairness_fix_mainline_v1_yaw_drift_step_measurement_noise_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 0.6536674027789463,
+        "rmse_position": 0.8815134144154989,
+        "rmse_yaw": 0.43983871373887806,
+        "final_position_error_norm": 11.412369373225763,
+        "max_abs_position_error": 11.035266376834985,
+        "max_abs_yaw_error": 0.9711956120187687,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185628_fairness_fix_mainline_v1_yaw_drift_step_residual_variance_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1914737896966856,
+        "rmse_position": 1.5730591878215838,
+        "rmse_yaw": 0.9538840961092997,
+        "final_position_error_norm": 19.330019483344543,
+        "max_abs_position_error": 18.805397768582473,
+        "max_abs_yaw_error": 3.6565662113117865,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.29400000000000015,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.17060480649735532,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185637_fairness_fix_mainline_v1_yaw_drift_step_uniform_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.5383798602132466,
+        "rmse_position": 2.128051894486518,
+        "rmse_yaw": 0.5088397665790032,
+        "final_position_error_norm": 25.100051788165715,
+        "max_abs_position_error": 24.671674299327965,
+        "max_abs_yaw_error": 1.6144708453653633,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185646_fairness_fix_mainline_v1_yaw_drift_step_xyz_only_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 375.2319109821581,
+        "rmse_position": 375.2319109821581,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 1190.1813287909133,
+        "max_abs_position_error": 1191.4199768272595,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185655_fairness_fix_mainline_v1_yaw_drift_step_measurement_noise_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.5383798602132466,
+        "rmse_position": 2.128051894486518,
+        "rmse_yaw": 0.5088397665790032,
+        "final_position_error_norm": 25.100051788165715,
+        "max_abs_position_error": 24.671674299327965,
+        "max_abs_yaw_error": 1.6144708453653633,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185704_fairness_fix_mainline_v1_yaw_drift_step_residual_variance_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.3899767263684983,
+        "rmse_position": 1.8544806124097575,
+        "rmse_yaw": 1.0282076435941865,
+        "final_position_error_norm": 18.438381839972784,
+        "max_abs_position_error": 16.14707066684788,
+        "max_abs_yaw_error": 4.195598952012719,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.29400000000000015,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.17060480649735532,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.17060480649735532,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185715_fairness_fix_mainline_v1_anisotropic_noise_step_uniform_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 6.419522149027481,
+        "rmse_position": 1.821566767062379,
+        "rmse_yaw": 15.392630954531338,
+        "final_position_error_norm": 8.751105477211645,
+        "max_abs_position_error": 8.183171581277525,
+        "max_abs_yaw_error": 81.77195424232934,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185723_fairness_fix_mainline_v1_anisotropic_noise_step_xyz_only_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 112.1284208683294,
+        "rmse_position": 112.1284208683294,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 289.29923389391683,
+        "max_abs_position_error": 265.9991986948456,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185734_fairness_fix_mainline_v1_anisotropic_noise_step_measurement_noise_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 6.44222081749054,
+        "rmse_position": 1.8210535139852517,
+        "rmse_yaw": 15.449662170149397,
+        "final_position_error_norm": 8.795823311764348,
+        "max_abs_position_error": 8.184628082625242,
+        "max_abs_yaw_error": 82.1066244876762,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185745_fairness_fix_mainline_v1_anisotropic_noise_step_residual_variance_seed7",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 6.44222081749054,
+        "rmse_position": 1.8210535139852517,
+        "rmse_yaw": 15.449662170149397,
+        "final_position_error_norm": 8.795823311764348,
+        "max_abs_position_error": 8.184628082625242,
+        "max_abs_yaw_error": 82.1066244876762,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            6.197701845484972e-05,
+            -0.0008622201328392422,
+            -0.0007579176294936782,
+            -0.0022821053105736354,
+            9.970196799474132e-05,
+            -0.0007541996484470523
+          ],
+          "std_residual": [
+            0.0046733733769371314,
+            0.004975164252912822,
+            0.1172801289891684,
+            0.009872565464217676,
+            0.008679168086440633,
+            0.009359199668023486
+          ],
+          "residual_scale": [
+            0.0046733733769371314,
+            0.004975164252912822,
+            0.1172801289891684,
+            0.009872565464217676,
+            0.008679168086440633,
+            0.009359199668023486
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.1172801289891684,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185755_fairness_fix_mainline_v1_anisotropic_noise_step_uniform_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1079022748055383,
+        "rmse_position": 1.0901167619424064,
+        "rmse_yaw": 0.9079548201877633,
+        "final_position_error_norm": 6.290852325715407,
+        "max_abs_position_error": 7.173833641307002,
+        "max_abs_yaw_error": 6.115238898918901,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185803_fairness_fix_mainline_v1_anisotropic_noise_step_xyz_only_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 68.07339924713189,
+        "rmse_position": 68.07339924713189,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 251.10463534331154,
+        "max_abs_position_error": 241.59128510599854,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185813_fairness_fix_mainline_v1_anisotropic_noise_step_measurement_noise_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1053205993200137,
+        "rmse_position": 1.0881226271609437,
+        "rmse_yaw": 0.9111578965967836,
+        "final_position_error_norm": 6.1245229037101785,
+        "max_abs_position_error": 7.173543952013687,
+        "max_abs_yaw_error": 6.115169867184882,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185824_fairness_fix_mainline_v1_anisotropic_noise_step_residual_variance_seed42",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1053205993200137,
+        "rmse_position": 1.0881226271609437,
+        "rmse_yaw": 0.9111578965967836,
+        "final_position_error_norm": 6.1245229037101785,
+        "max_abs_position_error": 7.173543952013687,
+        "max_abs_yaw_error": 6.115169867184882,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            -0.0003294944466775262,
+            -0.00043836056496072805,
+            -0.0020155931121091466,
+            0.0007922937732413312,
+            -0.00013262886924563807,
+            -0.000522045907016896
+          ],
+          "std_residual": [
+            0.005337717282809667,
+            0.004999532909324529,
+            0.11384175584571099,
+            0.00977213900568475,
+            0.00929946357936825,
+            0.009637355144972845
+          ],
+          "residual_scale": [
+            0.005337717282809667,
+            0.004999532909324529,
+            0.11384175584571099,
+            0.00977213900568475,
+            0.00929946357936825,
+            0.009637355144972845
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.11384175584571099,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185834_fairness_fix_mainline_v1_anisotropic_noise_step_uniform_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.15022410583128,
+        "rmse_position": 1.1655749533802167,
+        "rmse_yaw": 1.9504020109054265,
+        "final_position_error_norm": 8.015432226884691,
+        "max_abs_position_error": 7.928627802676852,
+        "max_abs_yaw_error": 13.64940518881464,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185843_fairness_fix_mainline_v1_anisotropic_noise_step_xyz_only_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 215.16476473151144,
+        "rmse_position": 215.16476473151144,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 492.3124334088295,
+        "max_abs_position_error": 517.8818030733607,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185853_fairness_fix_mainline_v1_anisotropic_noise_step_measurement_noise_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1501899079748754,
+        "rmse_position": 1.1656268639832312,
+        "rmse_yaw": 1.9501881858946115,
+        "final_position_error_norm": 8.016670701936848,
+        "max_abs_position_error": 7.929080665605116,
+        "max_abs_yaw_error": 13.64675103361063,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185904_fairness_fix_mainline_v1_anisotropic_noise_step_residual_variance_seed123",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.1501938488682233,
+        "rmse_position": 1.1656249224553838,
+        "rmse_yaw": 1.9502047094493464,
+        "final_position_error_norm": 8.016671035073388,
+        "max_abs_position_error": 7.929062118757337,
+        "max_abs_yaw_error": 13.64702239733085,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          0.9792874631354483,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.00013217253988280923,
+            0.0002675810578563839,
+            0.01570018280854406,
+            -0.0006693182554001581,
+            0.00020436724152724433,
+            -0.0003944934981911251
+          ],
+          "std_residual": [
+            0.0049284915239518655,
+            0.005030605980521311,
+            0.1229196385944537,
+            0.00985951134483699,
+            0.010211506198580701,
+            0.009933389153367944
+          ],
+          "residual_scale": [
+            0.0049284915239518655,
+            0.005030605980521311,
+            0.1229196385944537,
+            0.00985951134483699,
+            0.010211506198580701,
+            0.009933389153367944
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.1229196385944537,
+            0.01,
+            0.010211506198580701,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            0.9792874631354483,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185914_fairness_fix_mainline_v1_anisotropic_noise_step_uniform_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.5890409238713772,
+        "rmse_position": 1.2206591981572021,
+        "rmse_yaw": 3.2320719537316336,
+        "final_position_error_norm": 5.710406328238202,
+        "max_abs_position_error": 8.25999479521309,
+        "max_abs_yaw_error": 14.691301209689746,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_185922_fairness_fix_mainline_v1_anisotropic_noise_step_xyz_only_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 84.58897594934886,
+        "rmse_position": 84.58897594934886,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 224.57837597431143,
+        "max_abs_position_error": 209.53472447036475,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_185933_fairness_fix_mainline_v1_anisotropic_noise_step_measurement_noise_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.589067802390936,
+        "rmse_position": 1.2206772471440388,
+        "rmse_yaw": 3.232127205308577,
+        "final_position_error_norm": 5.707587130960289,
+        "max_abs_position_error": 8.260005573765131,
+        "max_abs_yaw_error": 14.691283314086085,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_185944_fairness_fix_mainline_v1_anisotropic_noise_step_residual_variance_seed314",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 1.589067802390936,
+        "rmse_position": 1.2206772471440388,
+        "rmse_yaw": 3.232127205308577,
+        "final_position_error_norm": 5.707587130960289,
+        "max_abs_position_error": 8.260005573765131,
+        "max_abs_yaw_error": 14.691283314086085,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            0.00011573111586590981,
+            -3.5620587940644465e-06,
+            0.008095615809804259,
+            -0.0003544871769063173,
+            -0.0006133759873352716,
+            0.00031682517659244105
+          ],
+          "std_residual": [
+            0.00515306255926643,
+            0.005369900546999316,
+            0.11886249893039862,
+            0.009059873719412633,
+            0.009571207356356378,
+            0.00947620124347857
+          ],
+          "residual_scale": [
+            0.00515306255926643,
+            0.005369900546999316,
+            0.11886249893039862,
+            0.009059873719412633,
+            0.009571207356356378,
+            0.00947620124347857
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.11886249893039862,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_step_20260401_185954_fairness_fix_mainline_v1_anisotropic_noise_step_uniform_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 2.732725186461346,
+        "rmse_position": 3.3245792788709094,
+        "rmse_yaw": 3.244476952806862,
+        "final_position_error_norm": 16.12223431571891,
+        "max_abs_position_error": 14.297140925650071,
+        "max_abs_yaw_error": 24.11950853746179,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_step_20260401_190003_fairness_fix_mainline_v1_anisotropic_noise_step_xyz_only_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 309,
+        "rmse_all_outputs": 364.53087858150565,
+        "rmse_position": 364.53087858150565,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 1047.828397166263,
+        "max_abs_position_error": 1061.2623031370688,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 249
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_step_20260401_190013_fairness_fix_mainline_v1_anisotropic_noise_step_measurement_noise_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 2.768478111162069,
+        "rmse_position": 3.437997827901095,
+        "rmse_yaw": 3.0872474764261986,
+        "final_position_error_norm": 15.873485743117568,
+        "max_abs_position_error": 15.500503453237442,
+        "max_abs_yaw_error": 22.151440431561536,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_step_20260401_190024_fairness_fix_mainline_v1_anisotropic_noise_step_residual_variance_seed2026",
+      "controller": "deepc",
+      "trajectory": "step",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 257,
+        "rmse_all_outputs": 2.7728820896380175,
+        "rmse_position": 3.4441173692574196,
+        "rmse_yaw": 3.091247115292556,
+        "final_position_error_norm": 16.029529972340903,
+        "max_abs_position_error": 15.5194840693618,
+        "max_abs_yaw_error": 22.15978331201245,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 8,
+        "N": 10,
+        "lambda_y": 1000.0,
+        "lambda_g": 10.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          0.9502794387035739,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 197,
+          "mean_residual": [
+            4.2320846770115324e-05,
+            -0.0002695205265224324,
+            0.00017278628762991383,
+            -0.0006180655686675401,
+            0.0004335856174522464,
+            0.0005193077170544104
+          ],
+          "std_residual": [
+            0.0048258661549777015,
+            0.005386873679359869,
+            0.12485332823317186,
+            0.0105232204262386,
+            0.0096810652115322,
+            0.009430051250816014
+          ],
+          "residual_scale": [
+            0.0048258661549777015,
+            0.005386873679359869,
+            0.12485332823317186,
+            0.0105232204262386,
+            0.0096810652115322,
+            0.009430051250816014
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.12485332823317186,
+            0.0105232204262386,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            0.9502794387035739,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 197
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190031_fairness_fix_mainline_v1_yaw_drift_figure8_uniform_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.40987505774327126,
+        "rmse_position": 0.5544875230030123,
+        "rmse_yaw": 0.2770176058961396,
+        "final_position_error_norm": 7.59818467022238,
+        "max_abs_position_error": 7.590915011048446,
+        "max_abs_yaw_error": 0.6590315866977058,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190038_fairness_fix_mainline_v1_yaw_drift_figure8_xyz_only_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 106.63299244948496,
+        "rmse_position": 106.63299244948496,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 245.41854578865207,
+        "max_abs_position_error": 265.98823434206736,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190045_fairness_fix_mainline_v1_yaw_drift_figure8_measurement_noise_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.40987505774327126,
+        "rmse_position": 0.5544875230030123,
+        "rmse_yaw": 0.2770176058961396,
+        "final_position_error_norm": 7.59818467022238,
+        "max_abs_position_error": 7.590915011048446,
+        "max_abs_yaw_error": 0.6590315866977058,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190052_fairness_fix_mainline_v1_yaw_drift_figure8_residual_variance_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 1.4301296419291534,
+        "rmse_position": 2.009516670474916,
+        "rmse_yaw": 0.38763960937120256,
+        "final_position_error_norm": 22.671212000835734,
+        "max_abs_position_error": 22.3923223683443,
+        "max_abs_yaw_error": 1.3630978905827074,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.22800000000000029,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.13249905660041517,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190059_fairness_fix_mainline_v1_yaw_drift_figure8_uniform_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12406976898720772,
+        "rmse_position": 0.05879291490174217,
+        "rmse_yaw": 0.28047379029286135,
+        "final_position_error_norm": 0.11828917336993451,
+        "max_abs_position_error": 0.37078381923859477,
+        "max_abs_yaw_error": 0.5206953073250667,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190105_fairness_fix_mainline_v1_yaw_drift_figure8_xyz_only_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 59.253732537515155,
+        "rmse_position": 59.253732537515155,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 100.71147166899534,
+        "max_abs_position_error": 165.91296786718078,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190112_fairness_fix_mainline_v1_yaw_drift_figure8_measurement_noise_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12406976898720772,
+        "rmse_position": 0.05879291490174217,
+        "rmse_yaw": 0.28047379029286135,
+        "final_position_error_norm": 0.11828917336993451,
+        "max_abs_position_error": 0.37078381923859477,
+        "max_abs_yaw_error": 0.5206953073250667,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190119_fairness_fix_mainline_v1_yaw_drift_figure8_residual_variance_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12893311028095225,
+        "rmse_position": 0.0646782685892871,
+        "rmse_yaw": 0.2893974079342715,
+        "final_position_error_norm": 0.36211516856669274,
+        "max_abs_position_error": 0.37110448643143346,
+        "max_abs_yaw_error": 0.5130978930651365,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.22800000000000029,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.13249905660041517,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190125_fairness_fix_mainline_v1_yaw_drift_figure8_uniform_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1403526923093926,
+        "rmse_position": 0.05766746961557219,
+        "rmse_yaw": 0.3238971663439172,
+        "final_position_error_norm": 0.08529292036568789,
+        "max_abs_position_error": 0.3705984994579097,
+        "max_abs_yaw_error": 0.5500188680797146,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190133_fairness_fix_mainline_v1_yaw_drift_figure8_xyz_only_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 209.41508753018994,
+        "rmse_position": 209.41508753018994,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 652.8394165342701,
+        "max_abs_position_error": 577.2302173445919,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190140_fairness_fix_mainline_v1_yaw_drift_figure8_measurement_noise_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1403526923093926,
+        "rmse_position": 0.05766746961557219,
+        "rmse_yaw": 0.3238971663439172,
+        "final_position_error_norm": 0.08529292036568789,
+        "max_abs_position_error": 0.3705984994579097,
+        "max_abs_yaw_error": 0.5500188680797146,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190146_fairness_fix_mainline_v1_yaw_drift_figure8_residual_variance_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1398931082148858,
+        "rmse_position": 0.057602596913683204,
+        "rmse_yaw": 0.32282701403014935,
+        "final_position_error_norm": 0.08048226160652017,
+        "max_abs_position_error": 0.3702552098249871,
+        "max_abs_yaw_error": 0.5461880366342967,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.22800000000000029,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.13249905660041517,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190153_fairness_fix_mainline_v1_yaw_drift_figure8_uniform_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12142581523714178,
+        "rmse_position": 0.06241193050314953,
+        "rmse_yaw": 0.27059856310331065,
+        "final_position_error_norm": 0.33602111190958006,
+        "max_abs_position_error": 0.37881214808543795,
+        "max_abs_yaw_error": 0.4605883143304297,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190200_fairness_fix_mainline_v1_yaw_drift_figure8_xyz_only_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 82.58245924709045,
+        "rmse_position": 82.58245924709045,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 185.8288481484084,
+        "max_abs_position_error": 209.5446157848194,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190206_fairness_fix_mainline_v1_yaw_drift_figure8_measurement_noise_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12142581523714178,
+        "rmse_position": 0.06241193050314953,
+        "rmse_yaw": 0.27059856310331065,
+        "final_position_error_norm": 0.33602111190958006,
+        "max_abs_position_error": 0.37881214808543795,
+        "max_abs_yaw_error": 0.4605883143304297,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190213_fairness_fix_mainline_v1_yaw_drift_figure8_residual_variance_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.12358765072283533,
+        "rmse_position": 0.07691116272389284,
+        "rmse_yaw": 0.26574414396162915,
+        "final_position_error_norm": 0.6771273115372322,
+        "max_abs_position_error": 0.6369265948682943,
+        "max_abs_yaw_error": 0.4555173459010994,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.22800000000000029,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.13249905660041517,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190220_fairness_fix_mainline_v1_yaw_drift_figure8_uniform_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1330896861962761,
+        "rmse_position": 0.05870270720881904,
+        "rmse_yaw": 0.3041631874917123,
+        "final_position_error_norm": 0.1340119404058975,
+        "max_abs_position_error": 0.3750033023976425,
+        "max_abs_yaw_error": 0.625071643932538,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190227_fairness_fix_mainline_v1_yaw_drift_figure8_xyz_only_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 341.1612349909651,
+        "rmse_position": 341.1612349909651,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 1089.4679476233644,
+        "max_abs_position_error": 1071.7802371907298,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "yaw_drift",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190234_fairness_fix_mainline_v1_yaw_drift_figure8_measurement_noise_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1330896861962761,
+        "rmse_position": 0.05870270720881904,
+        "rmse_yaw": 0.3041631874917123,
+        "final_position_error_norm": 0.1340119404058975,
+        "max_abs_position_error": 0.3750033023976425,
+        "max_abs_yaw_error": 0.625071643932538,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190240_fairness_fix_mainline_v1_yaw_drift_figure8_residual_variance_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 0.1352542407729162,
+        "rmse_position": 0.06339896406936257,
+        "rmse_yaw": 0.3071360153383155,
+        "final_position_error_norm": 0.33887513832381233,
+        "max_abs_position_error": 0.3722102847809887,
+        "max_abs_yaw_error": 0.6081030288352334,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.03,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0,
+            0.0,
+            0.22800000000000029,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std_residual": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "residual_scale": [
+            0.0,
+            0.0,
+            0.13249905660041517,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.13249905660041517,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": true,
+      "scenario": "yaw_drift",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190248_fairness_fix_mainline_v1_anisotropic_noise_figure8_uniform_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.896033242828361,
+        "rmse_position": 5.889846123161664,
+        "rmse_yaw": 2.4750610673704045,
+        "final_position_error_norm": 33.92527672211603,
+        "max_abs_position_error": 32.162223735823474,
+        "max_abs_yaw_error": 9.262899735398815,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190256_fairness_fix_mainline_v1_anisotropic_noise_figure8_xyz_only_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 105.38551481894676,
+        "rmse_position": 105.38551481894676,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 204.7326257183704,
+        "max_abs_position_error": 265.9991986948456,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190304_fairness_fix_mainline_v1_anisotropic_noise_figure8_measurement_noise_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.860662329183158,
+        "rmse_position": 5.846827823982429,
+        "rmse_yaw": 2.519234929358356,
+        "final_position_error_norm": 34.547401929443765,
+        "max_abs_position_error": 33.25640184256439,
+        "max_abs_yaw_error": 9.262960649491191,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190311_fairness_fix_mainline_v1_anisotropic_noise_figure8_residual_variance_seed7",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 7,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.860662329183158,
+        "rmse_position": 5.846827823982429,
+        "rmse_yaw": 2.519234929358356,
+        "final_position_error_norm": 34.547401929443765,
+        "max_abs_position_error": 33.25640184256439,
+        "max_abs_yaw_error": 9.262960649491191,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 7
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            -0.000166029527941188,
+            -0.0007179799906044533,
+            -0.004803671597528624,
+            -0.0027393527557306634,
+            -0.00019182496942907214,
+            -1.2377100138204064e-07
+          ],
+          "std_residual": [
+            0.004610112501691312,
+            0.004698537468501244,
+            0.12101196626538263,
+            0.009918018171167999,
+            0.00871592544177185,
+            0.008920872130833223
+          ],
+          "residual_scale": [
+            0.004610112501691312,
+            0.004698537468501244,
+            0.12101196626538263,
+            0.009918018171167999,
+            0.00871592544177185,
+            0.008920872130833223
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.12101196626538263,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190319_fairness_fix_mainline_v1_anisotropic_noise_figure8_uniform_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.582947236004996,
+        "rmse_position": 4.648515590916244,
+        "rmse_yaw": 7.587096763891458,
+        "final_position_error_norm": 32.43410020869063,
+        "max_abs_position_error": 26.351495814412974,
+        "max_abs_yaw_error": 35.92652767615953,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190326_fairness_fix_mainline_v1_anisotropic_noise_figure8_xyz_only_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 58.10365560901959,
+        "rmse_position": 58.10365560901959,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 75.68781489750425,
+        "max_abs_position_error": 165.91634361266878,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190334_fairness_fix_mainline_v1_anisotropic_noise_figure8_measurement_noise_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.728288943162131,
+        "rmse_position": 3.0667522152407827,
+        "rmse_yaw": 10.004051240295226,
+        "final_position_error_norm": 11.510679543467399,
+        "max_abs_position_error": 16.583940954454988,
+        "max_abs_yaw_error": 43.79880384840104,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190341_fairness_fix_mainline_v1_anisotropic_noise_figure8_residual_variance_seed42",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 42,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 4.728288943162131,
+        "rmse_position": 3.0667522152407827,
+        "rmse_yaw": 10.004051240295226,
+        "final_position_error_norm": 11.510679543467399,
+        "max_abs_position_error": 16.583940954454988,
+        "max_abs_yaw_error": 43.79880384840104,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 42
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            -0.00030898848473002923,
+            -0.00041897139607253146,
+            -0.00035169615328599737,
+            0.00010559184373310203,
+            -0.0002138325025838387,
+            -0.0006888171631602649
+          ],
+          "std_residual": [
+            0.005430758003901974,
+            0.004817189689941847,
+            0.11414766365078163,
+            0.00968959372334566,
+            0.009736563996434825,
+            0.009637873330288598
+          ],
+          "residual_scale": [
+            0.005430758003901974,
+            0.004817189689941847,
+            0.11414766365078163,
+            0.00968959372334566,
+            0.009736563996434825,
+            0.009637873330288598
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.11414766365078163,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190349_fairness_fix_mainline_v1_anisotropic_noise_figure8_uniform_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 3.9749947153308085,
+        "rmse_position": 2.030369069579031,
+        "rmse_yaw": 8.980140086858658,
+        "final_position_error_norm": 10.28073956173718,
+        "max_abs_position_error": 9.305412269736967,
+        "max_abs_yaw_error": 38.36104871900519,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190356_fairness_fix_mainline_v1_anisotropic_noise_figure8_xyz_only_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 197.74980637716482,
+        "rmse_position": 197.74980637716482,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 398.16010718209884,
+        "max_abs_position_error": 517.8818030733607,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190404_fairness_fix_mainline_v1_anisotropic_noise_figure8_measurement_noise_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 3.886516721356011,
+        "rmse_position": 1.9392136891838512,
+        "rmse_yaw": 8.806948366149971,
+        "final_position_error_norm": 8.914037415224717,
+        "max_abs_position_error": 8.432210133405913,
+        "max_abs_yaw_error": 37.27491761649877,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190411_fairness_fix_mainline_v1_anisotropic_noise_figure8_residual_variance_seed123",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 123,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 3.9300811696088798,
+        "rmse_position": 1.9832806703299648,
+        "rmse_yaw": 8.89283000710174,
+        "final_position_error_norm": 9.443882923238503,
+        "max_abs_position_error": 8.990135419249208,
+        "max_abs_yaw_error": 37.8137076911365,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 123
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          0.9395405758231299,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0005504696416089254,
+            -0.00010198769255995422,
+            0.014173256014050235,
+            -0.0007005784012351619,
+            0.0007408561712173265,
+            -0.0007026869537604616
+          ],
+          "std_residual": [
+            0.005058008557521375,
+            0.00503781246446591,
+            0.12416135041318666,
+            0.009648965234436662,
+            0.010643499873583446,
+            0.009656557483118819
+          ],
+          "residual_scale": [
+            0.005058008557521375,
+            0.00503781246446591,
+            0.12416135041318666,
+            0.009648965234436662,
+            0.010643499873583446,
+            0.009656557483118819
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.12416135041318666,
+            0.01,
+            0.010643499873583446,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            0.9395405758231299,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190419_fairness_fix_mainline_v1_anisotropic_noise_figure8_uniform_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 7.471379998190163,
+        "rmse_position": 4.346358412072875,
+        "rmse_yaw": 16.64588177297955,
+        "final_position_error_norm": 35.33683136387707,
+        "max_abs_position_error": 34.011985805766926,
+        "max_abs_yaw_error": 72.04469108759871,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190426_fairness_fix_mainline_v1_anisotropic_noise_figure8_xyz_only_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 82.84759664723326,
+        "rmse_position": 82.84759664723326,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 233.01587054178398,
+        "max_abs_position_error": 209.53472447036475,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190434_fairness_fix_mainline_v1_anisotropic_noise_figure8_measurement_noise_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 7.470805869819827,
+        "rmse_position": 4.346149144050637,
+        "rmse_yaw": 16.644505814351195,
+        "final_position_error_norm": 35.33055971765779,
+        "max_abs_position_error": 34.00426024869806,
+        "max_abs_yaw_error": 72.0194952556095,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190441_fairness_fix_mainline_v1_anisotropic_noise_figure8_residual_variance_seed314",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 314,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 7.470805869819827,
+        "rmse_position": 4.346149144050637,
+        "rmse_yaw": 16.644505814351195,
+        "final_position_error_norm": 35.33055971765779,
+        "max_abs_position_error": 34.00426024869806,
+        "max_abs_yaw_error": 72.0194952556095,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 314
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            -2.2019202904233692e-05,
+            4.112612855978933e-05,
+            0.021049136504211422,
+            -0.0002682440256524604,
+            -0.00038090453100667065,
+            0.0006691909236065699
+          ],
+          "std_residual": [
+            0.005053692805005669,
+            0.005229236895770367,
+            0.11210967871009371,
+            0.009041576252611526,
+            0.009406988822672819,
+            0.009111511568893907
+          ],
+          "residual_scale": [
+            0.005053692805005669,
+            0.005229236895770367,
+            0.11210967871009371,
+            0.009041576252611526,
+            0.009406988822672819,
+            0.009111511568893907
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.11210967871009371,
+            0.01,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190449_fairness_fix_mainline_v1_anisotropic_noise_figure8_uniform_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 6.058019409728369,
+        "rmse_position": 6.992290882681462,
+        "rmse_yaw": 4.661416182593645,
+        "final_position_error_norm": 44.41687171787221,
+        "max_abs_position_error": 33.815945519909526,
+        "max_abs_yaw_error": 41.02347804932684,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "uniform"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190456_fairness_fix_mainline_v1_anisotropic_noise_figure8_xyz_only_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyz",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 289,
+        "rmse_all_outputs": 333.99677015094403,
+        "rmse_position": 333.99677015094403,
+        "rmse_yaw": 0.0,
+        "final_position_error_norm": 945.4132827913047,
+        "max_abs_position_error": 943.9924862820884,
+        "max_abs_yaw_error": 0.0,
+        "has_yaw_output": false,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "random",
+        "random_excitation_amplitude": 0.2,
+        "regularization_mode": "uniform",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 100,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 229
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "xyz_only"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190504_fairness_fix_mainline_v1_anisotropic_noise_figure8_measurement_noise_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 6.058748965295301,
+        "rmse_position": 6.993544129681859,
+        "rmse_yaw": 4.661663762127242,
+        "final_position_error_norm": 44.43081813213942,
+        "max_abs_position_error": 33.82776830773722,
+        "max_abs_yaw_error": 41.02785881435102,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "measurement_noise",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": null,
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "measurement_noise"
+    },
+    {
+      "run_name": "deepc_figure8_20260401_190512_fairness_fix_mainline_v1_anisotropic_noise_figure8_residual_variance_seed2026",
+      "controller": "deepc",
+      "trajectory": "figure8",
+      "sampling_time": 0.1,
+      "dt": 0.001,
+      "reference_duration": 6.0,
+      "seed": 2026,
+      "output_set": "xyzpsi",
+      "lqr_noise": 0.02,
+      "regularized": true,
+      "metrics": {
+        "num_steps": 213,
+        "rmse_all_outputs": 6.058214033744273,
+        "rmse_position": 6.9926202450628505,
+        "rmse_yaw": 4.661648591827226,
+        "final_position_error_norm": 44.419899359497435,
+        "max_abs_position_error": 33.81855951881201,
+        "max_abs_yaw_error": 41.025647529206935,
+        "has_yaw_output": true,
+        "all_finite": true
+      },
+      "measurement": {
+        "noise_std": [
+          0.005,
+          0.005,
+          0.12,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "yaw_bias": 0.0,
+        "yaw_drift_per_sec": 0.0,
+        "seed": 2026
+      },
+      "deepc": {
+        "T_ini": 4,
+        "N": 10,
+        "lambda_y": 300.0,
+        "lambda_g": 3.0,
+        "solver": "CLARABEL",
+        "initial_controller": "lqr",
+        "random_excitation_amplitude": 0.15,
+        "regularization_mode": "residual_variance",
+        "attitude_slack_weight": 1.0,
+        "position_slack_weight": 1.0,
+        "output_slack_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "residual_weight_floor": 0.01,
+        "residual_weight_min": 0.1,
+        "residual_weight_max": 2.0,
+        "block_lambda_roll_pitch": null,
+        "block_lambda_yaw": null,
+        "block_lambda_position": null,
+        "data_length_extra": 0,
+        "effective_sigma_y_weights": [
+          1.0,
+          1.0,
+          0.1,
+          0.9227232453253528,
+          1.0,
+          1.0
+        ],
+        "residual_stat_summary": {
+          "mode": "residual_variance",
+          "num_samples": 153,
+          "mean_residual": [
+            0.0003334086180719563,
+            2.7006713318809346e-05,
+            0.004005040986818631,
+            -0.0003512305695274225,
+            0.0005635343500587914,
+            0.0010103489707199852
+          ],
+          "std_residual": [
+            0.004954757024838196,
+            0.005505784462860081,
+            0.12958180227879024,
+            0.010837485725716158,
+            0.00960139133732206,
+            0.009646424898280631
+          ],
+          "residual_scale": [
+            0.004954757024838196,
+            0.005505784462860081,
+            0.12958180227879024,
+            0.010837485725716158,
+            0.00960139133732206,
+            0.009646424898280631
+          ],
+          "effective_scale": [
+            0.01,
+            0.01,
+            0.12958180227879024,
+            0.010837485725716158,
+            0.01,
+            0.01
+          ],
+          "weights": [
+            1.0,
+            1.0,
+            0.1,
+            0.9227232453253528,
+            1.0,
+            1.0
+          ]
+        },
+        "data_length_T": 153
+      },
+      "stable": false,
+      "scenario": "anisotropic_noise",
+      "variant": "residual_variance"
+    }
+  ]
+}
