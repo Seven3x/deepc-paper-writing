@@ -68,12 +68,12 @@
 \vspace{1em}
 
 \section*{Abstract}
-We study data-driven fault-aware DeePC control for a lightweight quadrotor under single-rotor efficiency degradation. Our starting point is a nominal/degraded dual-bank DeePC scaffold. However, the scaffold alone is insufficient for a method-level fault-aware claim: without continued post-fault adaptation, the degraded bank can remain effectively frozen in the same data state as the nominal bank. We therefore add a minimal warm-start / transfer mechanism in which the degraded bank is bootstrapped from a mature nominal bank and continues updating with post-fault samples after fault onset, while the rest of the scaffold remains unchanged. After correcting the evaluation protocol, fixing a pathological hard-step benchmark, and replacing the unstable random DeePC initialization with a persistently exciting LQR-plus-noise initialization, the frozen-scaffold diagnosis remains and the result magnitudes return to a credible range. The current 10-seed matrix supports clear local gains for transfer in the \texttt{step + mild} case, but it does not support a broad stable-average-gain claim across all cases. MPC remains much stronger and continues to define the maturity boundary.
+We study data-driven fault-aware DeePC control for a lightweight quadrotor under single-rotor efficiency degradation. Our starting point is a nominal/degraded dual-bank DeePC scaffold. However, the scaffold alone is insufficient for a method-level fault-aware claim: without continued post-fault adaptation, the degraded bank can remain effectively frozen in the same data state as the nominal bank. We therefore add a minimal warm-start / transfer mechanism in which the degraded bank is bootstrapped from a mature nominal bank and continues updating with post-fault samples after fault onset, while the rest of the scaffold remains unchanged. After correcting the evaluation protocol, fixing a pathological hard-step benchmark, and replacing the unstable random DeePC initialization with a persistently exciting LQR-plus-noise initialization, the frozen-scaffold diagnosis remains and the result magnitudes return to a credible range. The current 10-seed DeePC-family matrix supports clear local gains for transfer in the \texttt{step + mild} case, but it does not support a broad stable-average-gain claim across all cases. A separate fairness check uses an identified-model MPC baseline built from pre-task excitation data and measurement-based state estimation. That baseline is clearly stronger on the step cases but remains seed-sensitive on the figure-eight cases, so it serves as a fairer traditional-model reference rather than a universal upper bound.
 
 \newpage
 \section*{Main Text}
 
-This manuscript follows the current Track 2 paper boundary: the active mainline is degraded-transfer DeePC, the primary claim target is the old dual-bank DeePC scaffold, and MPC is retained only as a stronger reference baseline. A protocol correction on 2026-04-06 aligned the DeePC and MPC evaluation windows and fault phase, replaced the pathological hard step reference with a smooth ramp, and replaced random DeePC initialization with a persistently exciting LQR-plus-noise path. The current matrix preserves the frozen-scaffold diagnosis and restores credible tracking magnitudes, but still supports only a case-local method gain rather than a broad all-case success story.
+This manuscript follows the current Track 2 paper boundary: the active mainline is degraded-transfer DeePC, and the primary claim target is the old dual-bank DeePC scaffold. A protocol correction on 2026-04-06 aligned the task-window evaluation logic, replaced the pathological hard step reference with a smooth ramp, and replaced random DeePC initialization with a persistently exciting LQR-plus-noise path. The current DeePC-family matrix preserves the frozen-scaffold diagnosis and restores credible tracking magnitudes, but still supports only a case-local method gain rather than a broad all-case success story. External controller comparison is now restricted to a separate identified-model MPC baseline built from data.
 
 \vspace{1em}
 \tableofcontents
@@ -81,7 +81,7 @@ This manuscript follows the current Track 2 paper boundary: the active mainline 
 
 \section{Introduction}
 
-Data-driven predictive control has become an attractive alternative to model-based MPC when reliable input/output data are easier to obtain than high-quality plant models \cite{coulson2019deepc,coulson2019regularized,baros2022odeepc}. In the present work, the target setting is outer-loop position tracking for a lightweight quadrotor under actuator degradation. The difficulty is not nominal tracking alone, but retaining useful closed-loop behavior after the plant changes because of a fault. A controller that remains tied to nominal data after fault onset may continue to function, but it does not yet support a convincing fault-aware interpretation.
+Data-driven predictive control has become an attractive alternative to model-based predictive control when reliable input/output data are easier to obtain than high-quality plant models \cite{coulson2019deepc,coulson2019regularized,baros2022odeepc}. In the present work, the target setting is outer-loop position tracking for a lightweight quadrotor under actuator degradation. The difficulty is not nominal tracking alone, but retaining useful closed-loop behavior after the plant changes because of a fault. A controller that remains tied to nominal data after fault onset may continue to function, but it does not yet support a convincing fault-aware interpretation.
 
 Within the DeePC literature, the most relevant prior line studies how to stabilize prediction quality and improve robustness under noise, limited data, or online operating changes \cite{coulson2019deepc,coulson2019regularized,baros2022odeepc}. These works motivate the present paper in two ways. First, they show that the usefulness of DeePC depends strongly on how recorded data are organized, refreshed, and regularized. Second, they suggest that under changing operating conditions the crucial issue is not only optimization tuning, but also whether the controller keeps access to data that remain behaviorally relevant after the change.
 
@@ -89,11 +89,11 @@ In parallel, the quadrotor fault-tolerant control literature contains many appro
 
 Track 2 centers on a nominal/degraded dual-bank DeePC scaffold. At first sight, this scaffold appears to provide a natural fault-aware decomposition because it separates nominal and degraded branches conceptually. However, the central observation of this study is that the scaffold is not sufficient by itself. When the degraded bank does not continue adapting after fault onset, the nominal and degraded banks can remain effectively frozen in the same data state. In that regime, the controller has two bank labels but not two meaningfully different adaptive states.
 
-This diagnosis changes how the method should be improved. The main bottleneck is not best understood as parameter tuning. Extending the pre-fault phase alone does not force useful nominal/degraded divergence. The critical question is whether the degraded branch continues to evolve with post-fault samples. If it does not, the dual-bank scaffold does not become genuinely fault-aware in practice. The paper therefore reframes the Track 2 problem as a bank-evolution problem inside the DeePC family, rather than a DeePC-versus-MPC contest.
+This diagnosis changes how the method should be improved. The main bottleneck is not best understood as parameter tuning. Extending the pre-fault phase alone does not force useful nominal/degraded divergence. The critical question is whether the degraded branch continues to evolve with post-fault samples. If it does not, the dual-bank scaffold does not become genuinely fault-aware in practice. The paper therefore reframes the Track 2 problem as a bank-evolution problem inside the DeePC family, rather than a contest against a privileged external controller.
 
 To address this issue, we introduce a minimal warm-start / transfer mechanism. The degraded bank is bootstrapped from the mature nominal bank when first needed, and then continues to absorb post-fault data through a sliding-window update process after fault onset. The change is intentionally narrow and local to bank evolution: we do not add a fault detection module, a large reconfiguration framework, or a more elaborate switching policy. Relative to broader quadrotor fault-tolerant control literature, our goal is much narrower: make the current DeePC dual-bank path minimally usable as a fault-aware branch.
 
-The resulting evidence now supports a still-bounded but less broken paper position. In the trusted single-rotor degradation matrix used for the paper, \texttt{deepc\_degraded\_transfer} shows a clear paired improvement over the old dual-bank baselines in \texttt{step + mild}, while the remaining three cases stay mixed or statistically inconclusive. A minimal component ablation still shows that warm-start alone is ineffective, while adaptation alone is insufficiently stable. At the same time, the corrected main matrix indicates that this mechanism evidence does not yet translate into a reliable average-performance gain across the whole benchmark, and the method remains much weaker than MPC.
+The resulting evidence now supports a still-bounded but less broken paper position. In the trusted single-rotor degradation matrix used for the paper, \texttt{deepc\_degraded\_transfer} shows a clear paired improvement over the old dual-bank baselines in \texttt{step + mild}, while the remaining three cases stay mixed or statistically inconclusive. A minimal component ablation still shows that warm-start alone is ineffective, while adaptation alone is insufficiently stable. At the same time, the corrected main matrix indicates that this mechanism evidence does not yet translate into a reliable average-performance gain across the whole benchmark, and the fair identified-model MPC comparison shows that traditional model-based control remains competitive where identification is stable.
 
 The paper can now make two conservative claims and one explicit non-claim. First, under the current corrected benchmark, the old dual-bank scaffold remains frozen unless a transfer mechanism is introduced. Second, a minimal warm-start plus post-fault adaptation mechanism is still the right place to look mechanistically, because neither component alone is enough in the ablation and the \texttt{step + mild} case now shows a clear local gain. Third, the current matrix does \emph{not} support the stronger claim that this mechanism already delivers a stable average DeePC improvement over the old dual-bank baseline across all cases.
 
@@ -103,7 +103,7 @@ The paper can now make two conservative claims and one explicit non-claim. First
 
 The benchmark in this paper is intentionally narrow. We focus on a lightweight quadrotor simulation subject to single-rotor efficiency degradation. This fault model is useful because it creates a controlled departure from nominal dynamics without expanding into a large family of unrelated failures. The benchmark is restricted to two reference trajectories, \texttt{step} and \texttt{figure8}, two degradation severities, \texttt{mild\_single\_rotor\_drop} and \texttt{severe\_single\_rotor\_drop}, and a fixed onset time of \texttt{20.0s}. This restriction is deliberate: the paper aims to establish the minimum claim that is currently supported, not to generalize beyond the available evidence.
 
-The old dual-bank scaffold provides two historical baselines. \texttt{deepc\_nominal\_bank} represents the nominal bank path, and \texttt{deepc\_degraded\_bank} represents the degraded bank path without the new transfer mechanism. These baselines remain necessary because the main question is not whether DeePC can beat every external controller, but whether the fault-aware branch becomes meaningfully different and more useful once transfer is added. MPC is still included in the experiments, but only as a stronger reference baseline that anchors the current maturity level of the DeePC branch.
+The old dual-bank scaffold provides two historical baselines. \texttt{deepc\_nominal\_bank} represents the nominal bank path, and \texttt{deepc\_degraded\_bank} represents the degraded bank path without the new transfer mechanism. These baselines remain necessary because the main question is not whether DeePC can beat every external controller, but whether the fault-aware branch becomes meaningfully different and more useful once transfer is added. External controller comparison is therefore separated from the main matrix and restricted to a smaller fairness check based on identified-model MPC.
 
 \subsection{Baseline dual-bank scaffold}
 
@@ -127,21 +127,21 @@ The method boundary is explicit. This paper does not introduce a fault detection
 
 \subsection{Experimental protocol}
 
-The paper uses one fixed main matrix. The trajectories are \texttt{step} and \texttt{figure8}. The fault scenarios are mild and severe single-rotor degradation. The fault onset is fixed at \texttt{20.0s}. The controller set is nominal-bank DeePC, degraded-bank DeePC, degraded-transfer DeePC, and MPC. The seed set is 41 through 50, yielding 10 seeds and 160 total runs.
+The paper uses one fixed main DeePC-family matrix. The trajectories are \texttt{step} and \texttt{figure8}. The fault scenarios are mild and severe single-rotor degradation. The fault onset is fixed at \texttt{20.0s}. The controller set is nominal-bank DeePC, degraded-bank DeePC, and degraded-transfer DeePC. The seed set is 41 through 50, yielding 10 seeds and 120 total runs.
 
 The primary metrics are position RMSE, final position error norm, and yaw RMSE. Success rate is included as a reliability summary. For each case, we aggregate results across seeds using mean and standard deviation, and we use 95\% confidence intervals or equivalent error bars to visualize seed-level uncertainty. Paired deltas are defined as \texttt{deepc\_degraded\_transfer} minus \texttt{deepc\_nominal\_bank}; for error metrics, negative deltas indicate improvement. In the strengthened paper matrix, \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank} are numerically identical, so the transfer-minus-nominal delta is effectively the same as the transfer-minus-degraded delta in this paper.
 
-In addition to the main matrix, we run one strictly minimal component ablation on two fixed cases with three seeds each. This ablation is not a new main experiment and is not used to replace the 10-seed evidence. Its role is narrower: it answers whether warm-start alone or adaptation alone can explain the mechanism, or whether the usable result depends on their combination.
+In addition to the main matrix, we run one strictly minimal component ablation on two fixed cases with three seeds each. This ablation is not a new main experiment and is not used to replace the 10-seed evidence. Its role is narrower: it answers whether warm-start alone or adaptation alone can explain the mechanism, or whether the usable result depends on their combination. We also run a separate 3-seed fairness comparison against an identified-model MPC baseline. That baseline is built from pre-task excitation data and uses measurement-based state estimation online, so it is intended to be a fairer traditional-model comparison under the same data-oriented setup.
 
 \subsection{Statistical analysis}
 
-The main analysis is descriptive and comparative across the fixed 10-seed matrix. For each controller-case combination, we report mean and standard deviation over seeds, together with 95\% confidence intervals or equivalent error bars for the seed-level mean estimates. The key method-level paired comparison is \texttt{deepc\_degraded\_transfer} versus \texttt{deepc\_nominal\_bank}; error metrics use the convention that negative deltas indicate improvement. MPC is reported as a stronger reference baseline only and is not the main statistical claim target.
+The main analysis is descriptive and comparative across the fixed 10-seed matrix. For each controller-case combination, we report mean and standard deviation over seeds, together with 95\% confidence intervals or equivalent error bars for the seed-level mean estimates. The key method-level paired comparison is \texttt{deepc\_degraded\_transfer} versus \texttt{deepc\_nominal\_bank}; error metrics use the convention that negative deltas indicate improvement. The identified-model MPC comparison is reported separately on its own 3-seed suite and is not mixed into the main DeePC-family statistics.
 
 The component ablation is intentionally evaluated at the minimal level of two cases and three fixed seeds. It is therefore interpreted as mechanism evidence rather than as a replacement for the main stability matrix. The main matrix answers whether the full method has a stable average effect, whereas the ablation answers whether the two transfer components are individually sufficient for a usable branch.
 
 \begin{table}[t]
   \centering
-  \caption{Main results on the fixed 10-seed Track 2 matrix. Values are mean $\pm$ std over seeds. The main claim target is the old dual-bank scaffold formed by \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank}. MPC is included only as a stronger reference baseline to show the maturity gap of the current DeePC prototype.}
+  \caption{Main results on the fixed 10-seed DeePC-family Track 2 matrix. Values are mean $\pm$ std over seeds. The main claim target is the old dual-bank scaffold formed by \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank}. External controller comparison is handled separately through a smaller identified-model MPC fairness check and is not mixed into the main matrix.}
   \label{tab:main-results}
   \scriptsize
   \resizebox{\textwidth}{!}{
@@ -152,19 +152,15 @@ The component ablation is intentionally evaluated at the minimal level of two ca
     step & mild & nominal bank & 6.49 $\pm$ 0.41 & 59.64 $\pm$ 6.51 & 2.17 $\pm$ 1.63 & 1.00 \\
     step & mild & degraded bank & 6.49 $\pm$ 0.41 & 59.64 $\pm$ 6.51 & 2.17 $\pm$ 1.63 & 1.00 \\
     step & mild & degraded transfer & 5.89 $\pm$ 0.53 & 54.04 $\pm$ 6.55 & 3.74 $\pm$ 3.18 & 1.00 \\
-    step & mild & mpc & 0.06 $\pm$ 0.00 & 0.02 $\pm$ 0.00 & 0.13 $\pm$ 0.00 & 1.00 \\
     step & severe & nominal bank & 7.67 $\pm$ 0.48 & 65.94 $\pm$ 12.79 & 8.55 $\pm$ 10.56 & 1.00 \\
     step & severe & degraded bank & 7.67 $\pm$ 0.48 & 65.94 $\pm$ 12.79 & 8.55 $\pm$ 10.56 & 1.00 \\
     step & severe & degraded transfer & 7.72 $\pm$ 0.44 & 67.91 $\pm$ 8.73 & 3.00 $\pm$ 1.34 & 1.00 \\
-    step & severe & mpc & 0.06 $\pm$ 0.00 & 0.04 $\pm$ 0.00 & 0.14 $\pm$ 0.00 & 1.00 \\
     figure8 & mild & nominal bank & 5.85 $\pm$ 0.56 & 54.67 $\pm$ 6.17 & 1.31 $\pm$ 1.28 & 1.00 \\
     figure8 & mild & degraded bank & 5.85 $\pm$ 0.56 & 54.67 $\pm$ 6.17 & 1.31 $\pm$ 1.28 & 1.00 \\
     figure8 & mild & degraded transfer & 5.92 $\pm$ 0.45 & 53.44 $\pm$ 6.32 & 2.78 $\pm$ 1.98 & 1.00 \\
-    figure8 & mild & mpc & 0.02 $\pm$ 0.00 & 0.02 $\pm$ 0.00 & 0.03 $\pm$ 0.00 & 1.00 \\
     figure8 & severe & nominal bank & 6.72 $\pm$ 0.82 & 55.78 $\pm$ 13.28 & 4.40 $\pm$ 4.13 & 1.00 \\
     figure8 & severe & degraded bank & 6.72 $\pm$ 0.82 & 55.78 $\pm$ 13.28 & 4.40 $\pm$ 4.13 & 1.00 \\
     figure8 & severe & degraded transfer & 7.04 $\pm$ 0.71 & 61.25 $\pm$ 8.97 & 7.06 $\pm$ 14.81 & 1.00 \\
-    figure8 & severe & mpc & 0.03 $\pm$ 0.00 & 0.02 $\pm$ 0.00 & 0.06 $\pm$ 0.00 & 1.00 \\
     \bottomrule
   \end{tabular}}
 \end{table}
@@ -201,9 +197,32 @@ At the case level, the main-text positive example should now be \texttt{step + m
 
 The paper should keep the mixed cases visible rather than hiding them. Under the trusted protocol, the key point is that the positive result is narrow rather than absent. The figure-eight mild case still works as a boundary illustration because its paired deltas remain small and statistically inconclusive, and the severe cases do not yet establish a reliable average gain either. These cases define the maturity boundary of the method even after the benchmark and initialization fixes.
 
-\subsection{MPC as Reference Only}
+\subsection{Identified-Model MPC Fairness Check}
 
-MPC remains a much stronger reference baseline in this benchmark, especially on the position and final-position metrics that matter most for the current task, as already visible in Table~\ref{tab:main-results}. The protocol correction removes the unfairness in the old comparison and the benchmark fix removes the pathological step behavior, but neither change removes the maturity gap. The role of MPC is still reference-only, but the current data show that any DeePC claim must remain narrow and internal to the DeePC family.
+To avoid comparing DeePC against a privileged external controller, the paper uses \texttt{identified\_mpc}, which first fits a linear model from pre-task excitation data and then runs MPC with measurement-based state estimation online. This comparison is intentionally smaller than the main DeePC-family matrix: it uses the same four fault cases but only three seeds, and its role is contextual rather than claim-defining.
+
+Table~\ref{tab:identified-mpc-compare} shows the resulting pattern. On the \texttt{step} cases, identified-model MPC is clearly stronger than \texttt{deepc\_degraded\_transfer}. In \texttt{step + mild}, the identified-model baseline reaches position RMSE $0.15 \pm 0.00$ versus $6.24 \pm 0.42$ for transfer; in \texttt{step + severe}, the gap is $0.35 \pm 0.05$ versus $7.36 \pm 0.34$. The \texttt{figure8} cases are qualitatively different. There, identified-model MPC is not a stable upper bound because one seed experiences a catastrophic identification failure in each degradation setting, which drives the three-seed mean far above the DeePC result. The fair comparison therefore does not support a simple ``traditional MPC always wins'' statement. What it supports is a more specific boundary: model-based control remains very strong when the identified model stays usable, but the fair identified-model path is itself fragile on the figure-eight fault cases.
+
+\begin{table}[t]
+  \centering
+  \caption{Fairness comparison against identified-model MPC. Values are mean $\pm$ std over three seeds. The identified-model baseline is built from pre-task excitation data and uses observer-based state estimation online.}
+  \label{tab:identified-mpc-compare}
+  \scriptsize
+  \begin{tabular}{llllll}
+    \toprule
+    Trajectory & Scenario & Controller & Position RMSE & Final position error & Yaw RMSE \\
+    \midrule
+    step & mild & degraded transfer & 6.24 $\pm$ 0.42 & 57.78 $\pm$ 4.42 & 4.15 $\pm$ 2.78 \\
+    step & mild & identified-model MPC & 0.15 $\pm$ 0.00 & 0.91 $\pm$ 0.02 & 0.13 $\pm$ 0.02 \\
+    step & severe & degraded transfer & 7.36 $\pm$ 0.34 & 55.06 $\pm$ 7.19 & 3.66 $\pm$ 1.01 \\
+    step & severe & identified-model MPC & 0.35 $\pm$ 0.05 & 3.64 $\pm$ 0.61 & 1.26 $\pm$ 0.17 \\
+    figure8 & mild & degraded transfer & 5.72 $\pm$ 0.41 & 51.95 $\pm$ 7.14 & 2.51 $\pm$ 3.63 \\
+    figure8 & mild & identified-model MPC & 39.88 $\pm$ 68.62 & 190.76 $\pm$ 328.83 & 90.95 $\pm$ 157.19 \\
+    figure8 & severe & degraded transfer & 6.34 $\pm$ 0.53 & 52.22 $\pm$ 9.84 & 1.86 $\pm$ 2.24 \\
+    figure8 & severe & identified-model MPC & 30.09 $\pm$ 51.45 & 64.26 $\pm$ 106.15 & 93.74 $\pm$ 160.18 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Minimal Necessity Ablation}
 
@@ -215,7 +234,7 @@ The ablation yields a clear qualitative ordering. First, warm-start alone is ine
 
 The main discussion point after protocol correction is narrower than before. Without transfer, the old dual-bank scaffold can remain frozen even when the degraded branch is nominally present. With transfer, the degraded bank still receives sustained post-fault adaptation and remains a meaningfully different branch path in implementation terms. The minimal component ablation sharpens this diagnosis: warm-start alone leaves the scaffold frozen, while adaptation alone produces an unstable degraded branch that is not yet a reliable method-level replacement for the full transfer path. This is still why the change should be presented as a bank-evolution mechanism rather than as a parameter tweak. However, the trusted 10-seed matrix shows that this mechanism evidence translates into a clear improvement only in a subset of the benchmark.
 
-The second discussion point is maturity and paper viability. Under the trusted protocol, the method is not improved on average in a way that can be defended from the main matrix alone. The positive evidence is concentrated in \texttt{step + mild}, while the other cases remain mixed. MPC remains stronger by a wide margin. These facts still prevent the paper from claiming a final fault-tolerant controller or a broad method win under the current benchmark.
+The second discussion point is maturity and paper viability. Under the trusted protocol, the method is not improved on average in a way that can be defended from the main matrix alone. The positive evidence is concentrated in \texttt{step + mild}, while the other cases remain mixed. The fair identified-model MPC comparison also shows that traditional model-based control is still very competitive on the step cases. At the same time, the figure-eight failures in the identified baseline show that a data-identified model path is not automatically robust either. These facts prevent the paper from claiming a final fault-tolerant controller or a broad method win under the current benchmark.
 
 The resulting paper position is therefore more limited than the original ambitious writeup, but not as reduced as the first broken rerun suggested. The contribution that survives is the diagnosis that the dual-bank scaffold is frozen without transfer, together with the ablation evidence that warm-start alone and adaptation alone are not interchangeable, plus a clean local gain in \texttt{step + mild}. Whether that is sufficient for a full paper remains a project decision, but it is a more defensible basis than the earlier broken pipeline allowed.
 
@@ -225,7 +244,7 @@ Future work should remain narrow and subordinate to the current paper boundary. 
 
 \section{Conclusions}
 
-This paper now supports a reduced but still usable conclusion. Minimal warm-start / transfer remains the mechanism that prevents the current nominal/degraded DeePC scaffold from staying completely frozen under single-rotor degradation, and the component ablation still indicates that warm-start alone and adaptation alone are insufficient. Under the trusted 10-seed matrix, the method shows a clear local gain in \texttt{step + mild}, while the remaining cases stay mixed and MPC remains much stronger. The current draft therefore should be written as a narrow, mechanism-centered DeePC improvement with explicit case-local evidence and explicit maturity limits, not as a broad all-case success story.
+This paper now supports a reduced but still usable conclusion. Minimal warm-start / transfer remains the mechanism that prevents the current nominal/degraded DeePC scaffold from staying completely frozen under single-rotor degradation, and the component ablation still indicates that warm-start alone and adaptation alone are insufficient. Under the trusted 10-seed matrix, the method shows a clear local gain in \texttt{step + mild}, while the remaining cases stay mixed. The separate identified-model MPC fairness check shows that a traditional model-based baseline remains clearly stronger on the step cases but is itself seed-sensitive on figure-eight fault cases. The current draft therefore should be written as a narrow, mechanism-centered DeePC improvement with explicit case-local evidence and explicit maturity limits, not as a broad all-case success story.
 
 \section{Electronic supplementary information}
 
@@ -252,17 +271,17 @@ Electronic supplementary information contains the transfer delta table, the boun
 
 \begin{table}[t]
   \centering
-  \caption{Supplementary paired-delta summary for \texttt{deepc\_degraded\_transfer}. Deltas are defined as \texttt{deepc\_degraded\_transfer} minus \texttt{deepc\_nominal\_bank}; negative values indicate improvement for error metrics. \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank} are numerically identical in the strengthened matrix, so the nominal-bank delta is effectively the historical dual-bank delta used in the main text. MPC is shown only as a reference baseline.}
+  \caption{Supplementary paired-delta summary for \texttt{deepc\_degraded\_transfer}. Deltas are defined as \texttt{deepc\_degraded\_transfer} minus \texttt{deepc\_nominal\_bank}; negative values indicate improvement for error metrics. \texttt{deepc\_nominal\_bank} and \texttt{deepc\_degraded\_bank} are numerically identical in the strengthened matrix, so the nominal-bank delta is effectively the historical dual-bank delta used in the main text.}
   \label{tab:delta-summary}
   \small
   \begin{tabular}{lrrrrrr}
     \toprule
-    Case & T-nominal pos. & T-nominal final & T-nominal yaw & T-mpc pos. & T-mpc final & T-mpc yaw \\
+    Case & T-nominal pos. & T-nominal final & T-nominal yaw \\
     \midrule
-    step + mild & -0.59 & -5.60 & +1.57 & +5.84 & +54.02 & +3.61 \\
-    step + severe & +0.05 & +1.97 & -5.55 & +7.66 & +67.87 & +2.87 \\
-    figure8 + mild & +0.07 & -1.24 & +1.47 & +5.90 & +53.41 & +2.76 \\
-    figure8 + severe & +0.32 & +5.47 & +2.66 & +7.01 & +61.23 & +7.00 \\
+    step + mild & -0.59 & -5.60 & +1.57 \\
+    step + severe & +0.05 & +1.97 & -5.55 \\
+    figure8 + mild & +0.07 & -1.24 & +1.47 \\
+    figure8 + severe & +0.32 & +5.47 & +2.66 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -311,6 +330,6 @@ The experiment configuration files, code, and aggregated results used in this st
 \section{References}
 
 \bibliographystyle{unsrt}
-\bibliography{paper/manuscript/references,references}
+\bibliography{references}
 
 \end{document}
