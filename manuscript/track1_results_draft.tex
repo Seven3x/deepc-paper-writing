@@ -1,0 +1,163 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\titleformat{\section}{\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\itshape\normalsize}{\thesubsubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{Track 1 DeePC Draft}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{Draft}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\graphicspath{
+  {docs/status/figures/}
+  {../../docs/status/figures/}
+}
+
+\begin{document}
+
+\onehalfspacing
+
+\begin{center}
+    \textbf{\LARGE Track 1 Frozen Results Package Draft}
+\end{center}
+
+\vspace{1em}
+
+\section*{Draft Positioning}
+
+This draft converts the frozen Track 1 evidence package into paper-facing prose. It keeps \texttt{async\_masked} as the headline method, uses \texttt{guarded\_async} only as mechanism evidence, and preserves the explicit limitation that improved aggregate errors do not imply full stress-case trajectory-shape recovery.
+
+\tableofcontents
+\newpage
+
+\section{Results}
+
+\subsection{Main Comparison Under Nominal, Delayed, and Burst-Dropout Measurements}
+
+Table~\ref{tab:track1-main-table} summarizes the frozen three-way comparison among \texttt{frozen\_naive}, \texttt{async\_masked}, and \texttt{guarded\_async}. The clean nominal case is intentionally retained because it defines the non-regression boundary: all three methods are numerically identical in both \texttt{step} and \texttt{figure8}, showing that the Track~1 modifications do not degrade the clean regime. The delayed-observation case then establishes the first robust gain. On \texttt{figure8 + delay\_1}, \texttt{async\_masked} reduces position RMSE from \texttt{0.0912} to \texttt{0.0743} while maintaining a success rate of \texttt{1.00}, and the same pattern appears more strongly on \texttt{step + delay\_1}, where the naive baseline becomes unreliable but both asynchronous variants remain stable. These results support the claim that masking asynchronous history improves robustness to delayed observations without paying a clean-case penalty.
+
+The main stress evidence comes from the burst-dropout family. In the frozen main table, \texttt{async\_masked} remains the strongest headline method as dropout intensifies, while \texttt{frozen\_naive} fails visibly in both average error and success rate. The newly supplemented \texttt{guarded\_async} rows at \texttt{burst\_dropout\_03pct} and \texttt{burst\_dropout\_10pct} sharpen this boundary rather than weakening it: at \texttt{03pct}, \texttt{guarded\_async} reaches position RMSE \texttt{6.9363} with success rate \texttt{0.00}, and at \texttt{10pct} it remains poor at RMSE \texttt{4.7513} with success rate \texttt{0.00}, while \texttt{async\_masked} stays at RMSE \texttt{0.3219} with success rate \texttt{1.00} in both cases. The same qualitative result appears in the frozen stress endpoint at \texttt{burst\_dropout\_20pct}: \texttt{frozen\_naive} reaches position RMSE \texttt{3.6457} with success rate \texttt{0.00}, whereas \texttt{async\_masked} remains bounded at \texttt{0.3219} with success rate \texttt{1.00}. These numbers justify a conservative headline claim: asynchronous masking yields substantially cleaner degradation behavior than both the frozen naive baseline and the guarded mechanism variant when burst dropout becomes severe.
+
+Although \texttt{guarded\_async} is included in the frozen package, it should not be framed as the main winner. Its clean and delayed cases match \texttt{async\_masked}, but once the moderate burst-dropout rows are filled, the picture becomes even clearer: it is unfavorable at \texttt{03pct} and \texttt{10pct}, and even at the \texttt{20pct} stress endpoint its mechanism benefit does not translate into better headline tracking. The most defensible interpretation is therefore that \texttt{guarded\_async} is valuable for mechanism analysis, not for replacing \texttt{async\_masked} as the central result.
+
+\begin{table}[t]
+  \centering
+  \caption{Frozen main comparison on the primary \texttt{figure8} trajectory for the Track~1 package. The \texttt{guarded\_async} rows at \texttt{burst\_dropout\_03pct} and \texttt{burst\_dropout\_10pct} were supplemented later using the same frozen controller configuration and seeds \texttt{41,42,43} to complete the comparison.}
+  \label{tab:track1-main-table}
+  \small
+  \begin{tabular}{lllll}
+    \toprule
+    Scenario & Method & Position RMSE & Final Position Error & Success Rate \\
+    \midrule
+    nominal & frozen\_naive & 0.0711 & 0.0336 & 1.00 \\
+    nominal & async\_masked & 0.0711 & 0.0336 & 1.00 \\
+    nominal & guarded\_async & 0.0711 & 0.0336 & 1.00 \\
+    delay\_1 & frozen\_naive & 0.0912 & 0.0197 & 1.00 \\
+    delay\_1 & async\_masked & 0.0743 & 0.0324 & 1.00 \\
+    delay\_1 & guarded\_async & 0.0743 & 0.0324 & 1.00 \\
+    burst\_dropout\_03pct & frozen\_naive & 3.6784 & 17.0595 & 0.33 \\
+    burst\_dropout\_03pct & async\_masked & 0.3219 & 0.6966 & 1.00 \\
+    burst\_dropout\_03pct & guarded\_async & 6.9363 & 23.8417 & 0.00 \\
+    burst\_dropout\_10pct & frozen\_naive & 4.5371 & 13.6908 & 0.00 \\
+    burst\_dropout\_10pct & async\_masked & 0.3219 & 0.6966 & 1.00 \\
+    burst\_dropout\_10pct & guarded\_async & 4.7513 & 21.9197 & 0.00 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Severity Gradient Within the Burst-Dropout Family}
+
+Figure~\ref{fig:track1-gradient} orders the \texttt{figure8} burst-dropout cases as \texttt{nominal $\rightarrow$ delay\_1 $\rightarrow$ burst\_dropout\_02pct $\rightarrow$ burst\_dropout\_03pct $\rightarrow$ burst\_dropout\_10pct $\rightarrow$ burst\_dropout\_20pct}. This ordering matters because it prevents the severe dropout case from being read as a cherry-picked outlier. The gradient shows that \texttt{burst\_dropout\_02pct} is the onset of visible separation and that \texttt{burst\_dropout\_03pct} is the first clean dominance point: at \texttt{03pct}, \texttt{frozen\_naive} reaches RMSE \texttt{3.6784} with success rate \texttt{0.33}, while \texttt{async\_masked} remains at RMSE \texttt{0.3219} with success rate \texttt{1.00}. The same bounded behavior persists at \texttt{10pct} and remains substantially better than the naive baseline at \texttt{20pct}.
+
+This gradient supports two manuscript goals. First, it makes the robustness gain interpretable as a continuous stress response rather than a single favorable case. Second, it clarifies that the Track~1 result is not perfect dropout recovery; the value is that the asynchronous masking strategy changes the degradation profile from failure-prone to bounded and repeatable over the same burst-dropout family.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig_main_gradient.png}
+  \caption{Burst-dropout severity gradient for the frozen \texttt{figure8} Track~1 package. The ordering shows that separation begins at \texttt{burst\_dropout\_02pct}, becomes decisive at \texttt{burst\_dropout\_03pct}, and remains visible through the natural stress endpoint \texttt{burst\_dropout\_20pct}.}
+  \label{fig:track1-gradient}
+\end{figure}
+
+\subsection{Representative Trajectory Evidence}
+
+The representative \texttt{figure8} trajectory renderings provide the most direct visual evidence for the main result. At \texttt{burst\_dropout\_03pct}, the naive baseline visibly breaks the planar loop, while \texttt{async\_masked} preserves a recognizable local shape and a much better $z$ profile. This is the strongest single qualitative figure because it aligns cleanly with the first decisive point in the severity gradient. At \texttt{burst\_dropout\_10pct}, the same qualitative separation persists: \texttt{frozen\_naive} becomes unstable, whereas \texttt{async\_masked} still yields a bounded trajectory that follows the intended motion pattern well enough to support the robustness narrative.
+
+The representative trajectory set is intentionally aligned with the main-table burst-dropout rows that now matter most for the paper narrative: \texttt{03pct} and \texttt{10pct}. The \texttt{20pct} case is still important, but it is better used later as a stress-case object for shape-quality and mechanism analysis rather than as a second main-text trajectory win figure.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig_main_figure8_dropout03.png}
+  \caption{Representative strength case at \texttt{figure8 + burst\_dropout\_03pct}. The naive baseline breaks the loop geometry, whereas \texttt{async\_masked} retains a recognizable local trajectory shape and remains suitable as the main-text qualitative win figure.}
+  \label{fig:track1-main-traj}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig_main_figure8_dropout10.png}
+  \caption{Representative stronger-case figure at \texttt{figure8 + burst\_dropout\_10pct}. The same qualitative advantage persists beyond the first clean dominance point: \texttt{frozen\_naive} remains visibly unstable, whereas \texttt{async\_masked} still produces a bounded and recognizable trajectory.}
+  \label{fig:track1-stronger-traj}
+\end{figure}
+
+\subsection{Limitation: Relative Gains Do Not Imply Nominal-Quality Shape Recovery}
+
+A key strength of the frozen package is that it does not stop at aggregate tracking errors. The shape-quality analysis at \texttt{figure8 + burst\_dropout\_20pct} shows that \texttt{async\_masked} is much less erratic than \texttt{frozen\_naive}, yet still far from its own nominal anchor. Compared with \texttt{async\_masked + nominal}, the stressed trajectory loses planar coverage, shortens the traversed path, and accumulates substantial turning-region and lag errors. In particular, the stressed asynchronous run drops to \texttt{bbox\_coverage\_ratio\_xy = 0.2886} and \texttt{path\_length\_ratio = 0.6126}, while the naive baseline's apparently full coverage is actually a symptom of overshoot and divergence rather than faithful tracking.
+
+This evidence is important for the claim boundary. The paper can safely claim improved robustness and cleaner degradation under asynchronous burst-dropout measurements, but it should not claim full trajectory-shape recovery in the hardest stress regime. The limitation is not that the method fails to help; it is that the remaining distortion is still visually and geometrically meaningful even when average error metrics improve dramatically.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig_shape_quality_dropout20.png}
+  \caption{Shape-quality limitation evidence for \texttt{figure8 + burst\_dropout\_20pct}. The stressed \texttt{async\_masked} trajectory remains far less erratic than the naive baseline, but still loses planar coverage and path length relative to its own nominal anchor.}
+  \label{fig:track1-shape-quality}
+\end{figure}
+
+\section{Mechanism Discussion}
+
+\subsection{QP Starvation and the Role of Guarded Bootstrap}
+
+The mechanism evidence explains why \texttt{guarded\_async} belongs in the paper even though it is not the headline method. Under severe burst dropout, the plain \texttt{async\_masked} controller keeps the formal Hankel bank clean by accepting only fully observed source slots. That choice preserves bank integrity, but it also creates a starvation effect: partial slots accumulate, the data remain insufficiently exciting for the online optimization, and the QP can stay offline for the relevant evaluation window. In the representative \texttt{figure8 + burst\_dropout\_20pct} case, this appears as \texttt{qp\_online\_ratio = 0.0000} for \texttt{async\_masked}.
+
+\texttt{guarded\_async} addresses that mechanism without collapsing the distinction between clean formal-bank updates and risky partial observations. Its bootstrap-only partial path raises the representative online activity to \texttt{qp\_online\_ratio = 0.1333} at the \texttt{20pct} stress endpoint, but the same frozen evidence also shows why this should be described as a trade-off rather than a free improvement. In the moderate burst-dropout regime, the supplemented \texttt{03pct/10pct} comparisons are even less favorable: \texttt{guarded\_async} does not recover QP online activity there at all and remains much worse than \texttt{async\_masked} in tracking performance. The guarded path therefore restores some online optimization only in the hardest stress case, at the cost of contamination pressure, and still does not translate into better headline tracking than plain \texttt{async\_masked}. The most useful paper role for this result is therefore explanatory: it demonstrates that QP starvation is real under burst dropout and that recovering online activity is possible, while also showing that partial-data assistance does not automatically produce better top-line performance.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig_mechanism_qp_bootstrap.png}
+  \caption{Mechanism figure for \texttt{figure8 + burst\_dropout\_20pct}. The guarded bootstrap path restores partial online QP availability without allowing partial observations to directly redefine the formal Hankel bank, but the recovered activity does not overturn the headline tracking ranking.}
+  \label{fig:track1-mechanism}
+\end{figure}
+
+\section{Discussion Boundary}
+
+Taken together, the frozen Track~1 package supports a conservative but meaningful conclusion. \texttt{async\_masked} is the stable headline method because it preserves the clean nominal case, improves delayed-observation robustness, and remains strongly superior to the frozen naive baseline throughout the burst-dropout severity ladder. The supplemented \texttt{guarded\_async} rows at \texttt{03pct} and \texttt{10pct} make the claim boundary sharper rather than more ambiguous: they show that the guarded recipe is not a broadly stronger controller in the moderate burst-dropout regime. \texttt{guarded\_async} still strengthens the paper, but specifically by exposing the underlying QP-starvation mechanism and by illustrating the trade-off involved in recovering online activity without directly contaminating the formal Hankel bank.
+
+The strongest defensible limitation is equally clear. Even where \texttt{async\_masked} dominates the naive baseline numerically, the hardest stress-case trajectories remain compressed, lagged, and weaker in turning regions than the reference path. The appropriate paper claim is therefore improved robustness and cleaner degradation under asynchronous and dropout-corrupted measurements, not full recovery of nominal-quality tracking and not universal superiority of the guarded mechanism variant.
+
+\end{document}
